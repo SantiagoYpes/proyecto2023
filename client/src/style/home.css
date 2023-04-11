@@ -1,0 +1,389 @@
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+} 
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+}  
+
+.hero{
+
+    width: 100%;
+    height: 650px; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: center; 
+    background-attachment: fixed; 
+    position: relative;
+    overflow: hidden;
+ 
+} 
+
+.textos-hero {
+
+    height: 500px; 
+    color: #fff; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    
+} 
+
+.textos-hero h1 {
+    font-size: 60px; 
+} 
+
+.textos-hero p {
+    font-size: 25px;  
+    margin-bottom: 25px;
+}  
+
+.textos-hero a {
+    display: inline-block; 
+    text-decoration: none; 
+    padding: 12px 15px;  
+    background: #ee2738c4; 
+    border-radius: 10px; 
+    color: #fff;
+}   
+
+.textos-hero a:hover{ 
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);   
+    transform: scale(1.05); 
+    cursor: pointer;
+} 
+
+.svg-hero{
+    position: absolute;  
+    bottom: 0; 
+    left: 0;  
+    width: 100%;
+} 
+
+/*estilos generales*/ 
+
+.contenedor,
+.contenedor-ola,
+.wave-contenedor{
+    width: 90%; 
+    max-width: 1000px; 
+    overflow: hidden;
+    margin: auto; 
+    padding: 0 0 80px 0;
+} 
+
+.contenedor-ola{  
+    margin-bottom: 5%;
+} 
+
+.titulo{
+    font-weight: 300; 
+    font-size: 35px; 
+    text-align: center; 
+    margin-bottom: 30px; 
+} 
+
+.titulo.left{
+    text-align: center;
+} 
+
+.titulo.rigth{
+    text-align: right;
+}
+
+/*Section*/  
+
+.website {
+    display: flex;
+    justify-content: space-between;
+} 
+
+.website img{
+    width: 48%;
+} 
+
+.website .contenedor-textos-main{
+    width: 40%; 
+} 
+
+.parrfo{ 
+    text-align: justify; 
+    margin-bottom: 20px;  
+}  
+
+#prueba{
+    margin-left: 15%;
+}
+
+.cta{
+    display: inline-block; 
+    text-decoration: none; 
+    background: #ee2738dc; 
+    padding: 12px 15px; 
+    border-radius: 10px; 
+    color: #fff;
+}  
+
+.cta:hover{ 
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.7);   
+    transform: scale(1.08); 
+    cursor: pointer;
+} 
+
+.cta1{
+    display: inline-block; 
+    text-decoration: none; 
+    background: #fff; 
+    width: 200px;
+    padding: 10px; 
+    border: 1px solid #ee2738dc;
+    color: #ee2738dc;
+}  
+
+.cta5{
+    margin-left: 20px;
+    display: inline-block; 
+    text-decoration: none; 
+    background: #ee2738dc; 
+    padding: 12px 15px; 
+    border-radius: 10px; 
+    color: #fff;
+}  
+
+.cta5:hover{ 
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.7);   
+    transform: scale(1.08); 
+    cursor: pointer;
+}  
+
+/*Info*/ 
+
+.info{
+    background: #1f6768; 
+    color: #fff;
+}  
+
+#mid{
+    text-align: center;
+}
+
+/*Cards*/ 
+
+.content-cards{
+    display: flex; 
+    width: 100%; 
+    justify-content: space-evenly;  
+    flex-wrap: wrap; 
+} 
+
+.card{
+    width: 30%; 
+    text-align: center; 
+    height: 300px; 
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);  
+    transform: scale(1); 
+    transition: transform 0.3s; 
+
+}   
+
+.card1{
+    width: 30%;  
+    text-align: center; 
+    height: 300px; 
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);  
+    transform: scale(1); 
+    transition: transform 0.3s; 
+}     
+
+#btn_log{
+    color:#FFFFFF;
+}
+
+#log_out{  
+    margin-top: -500px; 
+    margin-left: 95%;
+    color: #FFFFFF; 
+    font-size: 50px;
+}
+
+.card1 i {
+    margin: 30px 0 20px 0; 
+    color: #ee2737; 
+    font-size: 50px;
+}  
+
+.card1:hover{ 
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);   
+    transform: scale(1.03); 
+    cursor: pointer;
+} 
+
+#qr{
+    width: 65%;
+}
+
+.card:hover{ 
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);   
+    transform: scale(1.03); 
+    cursor: pointer;
+} 
+
+.card i {
+    margin: 30px 0 20px 0; 
+    color: #ee2737; 
+    font-size: 50px;
+} 
+
+.card p{
+    font-weight: 300; 
+    font-size: 25px; 
+    margin-bottom: 10px;
+} 
+
+/*Info2*/ 
+
+.last-section{
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-evenly;  
+    padding-bottom: 40px; 
+    
+} 
+
+.last-section img {
+    width: 100%;   
+} 
+
+.last-section .contenedor-textos-main{
+    width: 200%; 
+}  
+
+/*Footer*/ 
+
+footer{
+    background: #1f6768; 
+    color: #fff;
+} 
+
+.form {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between;
+} 
+
+.input{
+    background: transparent; 
+    border: 0;
+    color: #fff; 
+    outline: none; 
+    border: 1px solid #fff; 
+    padding: 20px 10px;
+} 
+
+.input::placeholder{
+    color: #fff; 
+    font-family: 'raleway', 'sans-serif';
+} 
+
+input[type = "text"],  
+input[type = "email"]{
+    display: inline-block; 
+    width: 49%; 
+    margin-bottom: 30px; 
+}
+
+.form textarea{
+    width: 100%; 
+    margin-bottom: 15px;
+} 
+
+#prueba2{
+    width: 98.5%; 
+    margin-bottom: 15px;
+}
+
+input[type = "submit"]{
+    width: 120px; 
+    text-align: center; 
+    padding: 14px 0;
+} 
+
+input[type = "submit"]:hover{
+    cursor: pointer; 
+    color: #ee2737; 
+    background: white;
+}
+
+.loader {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    border: 3px solid;
+    border-color: #7dc2bf #7dc2bf transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid;
+    border-color: transparent #EE2737 #FF3D00;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: rotationBack 0.3s linear infinite;
+    transform-origin: center center;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotationBack {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.loading {
+    width: 100%;
+    height: 100vh;
+    background-color: #f3f3f3;
+    z-index: 1000;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: circle(150% at 100% 0%);
+    transition: clip-path 0.8s ease-in-out;
+}
+
+.loading2 {
+    clip-path: circle(0% at 100% 0);
+}
