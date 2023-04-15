@@ -27,8 +27,4 @@ jobs:
         node-version: 18.15.0
         cache: 'npm'
     - run: npm ci
-    - run: cd \client\
-    - run: ls
-    - run: cd \client\
-    - run: ls
-    - run: npm run
+    - run: npm start
