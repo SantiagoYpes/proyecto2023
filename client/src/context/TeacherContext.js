@@ -11,7 +11,8 @@ export const TeacherProvider =  ({children}) => {
     console.log(teachers)
     return <contextTeachers.Provider value={{
         teachers,
-        setTeachers
+        setTeachers,
+
     }}>
         {children}
     </contextTeachers.Provider>

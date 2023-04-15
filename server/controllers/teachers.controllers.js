@@ -6,9 +6,9 @@ export const getTeachers = async(req, res) => {
 }
 
 export const newTeacher = async(req,res) => {
-    
-    const {id, name, lastname} = req.body
-    const teacher = new Teacher({id, name, lastname})
+    console.log(req.body)
+    const {ced, name, lastname, subject, email, valuehour, cell, type} = req.body
+    const teacher = new Teacher({ced, name, lastname, subject, email, valuehour, cell, type})
     await teacher.save()
     res.json(teacher)
 }

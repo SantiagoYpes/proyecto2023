@@ -4,7 +4,7 @@ import { Schema, model } from "mongoose";
 // If I want that the title be a primary key
 const teacherSchema = new Schema(
   {
-    id: {
+    ced: {
       type: String,
       require: true,
       unique: true,
@@ -19,13 +19,31 @@ const teacherSchema = new Schema(
       type: String,
       require: true,
     },
+    subject: {
+      type: String,
+      require: true,
+      trim: true,
+    },
+    cell: {
+      type: String,
+      require: true,
+    },
+    email: {
+      type: String,
+      require: true,
+    },
+    valuehour: {
+      type: Number,
+      require: true,
+    },
     image: {
       url: String,
       public_id: String
     },
-    active: {
-      type: Boolean,
-      default: false,
+    Type: {
+      type: String,
+      require: true,
+
     },
   },
   {

@@ -2,16 +2,17 @@ import express from "express";
 import adminRoutes from "./routes/admin.routes.js";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
+import cors from "cors";
 const app = express()
 
-console.log(__dirname);
-
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    methods: 'GET,POST',
+    allowedHeaders: 'Content-Type',
+  };
 app.use(express.json())
 
+app.use(cors(corsOptions));
 app.use(adminRoutes)
 
-app.use(express.static(join(__dirname,'../client/build')))
-console.log(join(__dirname,'../client/build'));
 export default app
