@@ -19,11 +19,6 @@ const teacherSchema = new Schema(
       type: String,
       require: true,
     },
-    subject: {
-      type: String,
-      require: true,
-      trim: true,
-    },
     cell: {
       type: String,
       require: true,
