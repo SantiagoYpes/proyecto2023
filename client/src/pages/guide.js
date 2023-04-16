@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
-export default function Home() {
+export default function Guide() {
   const [teachers, setTeachers] = useState([]);
   const url = "http://localhost:4000/teachers";
   useEffect(() => {
