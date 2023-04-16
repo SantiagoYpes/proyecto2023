@@ -1,9 +1,5 @@
-import axios from "axios";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Toaster, toast } from "react-hot-toast";
 
-export default function Home() {
+export default function SingUp() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 text-[#000000]">
       <div className="bg-white shadow-md rounded-md p-8 max-w-md w-full">
