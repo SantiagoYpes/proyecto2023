@@ -17,4 +17,8 @@ export const updateTeacher = (req,res) => res.send("Teacher updated")
 
 export const deleteTeacher = (req,res) => res.send("New teacher updated")
 
-export const teacherId = (req,res)=> res.send("Teacher by id")
+export const teacherId = async(req,res)=>{
+    const {id} = req.params
+    const teacher = await Teacher.findById(id)
+    res.send(teacher)
+  }

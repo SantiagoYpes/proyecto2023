@@ -1,4 +1,5 @@
-
+import Link from "next/link";
+import { useRouter } from "next/router";
 export default function SingUp() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 text-[#000000]">
@@ -71,7 +72,7 @@ export default function SingUp() {
           >
             Registrarse
           </button>   
-          <p class="text-gray-600 text-center">Inicia sesión <a href="#" class="text-[#EE2737] hover:text-[#1F6768]">aquí.</a></p>
+          <p class="text-gray-600 text-center">Inicia sesión <Link href="/signup" class="text-[#EE2737] hover:text-[#1F6768]">aquí.</Link></p>
         </form>
       </div>
     </div>

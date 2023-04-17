@@ -1,19 +1,19 @@
 import { useState, createContext, useContext } from "react";
 
-const contextTeachers = createContext()
-export const useTeachers = () => {
-    const context = useContext(contextTeachers)
+
+
+export const contextTeacher = createContext()
+export const useTeacher = () => {
+    const context = useContext(contextTeacher)
     return context
 }
-export const TeacherProvider =  ({children}) => {
-    console.log('Container console')
-    const [teachers, setTeachers] = useState([])
-    console.log(teachers)
-    return <contextTeachers.Provider value={{
-        teachers,
-        setTeachers,
 
+export const TeacherProvider =  ({children}) => {
+    const [teacher, setTeacher] = useState()
+    return <contextTeacher.Provider value = {{
+        teacher,
+        setTeacher
     }}>
         {children}
-    </contextTeachers.Provider>
+    </contextTeacher.Provider>
 }
