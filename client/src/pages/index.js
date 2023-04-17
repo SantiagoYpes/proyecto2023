@@ -11,6 +11,8 @@ export default function Home() {
           Button
         </button>
       </div>
+      <footer className={styles.footer}>
+      </footer>
     </div>
   );
 }
