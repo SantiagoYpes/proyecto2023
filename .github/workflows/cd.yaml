@@ -9,7 +9,7 @@
      id: meta
      uses: docker/metadata-action@v4
      with:
-       images: NOMBRE_DE_CUENTA/SU_IMAGEN_DOCKER
+       images: santiypes/front
       
    - name: Build and push Docker image
      uses: docker/build-push-action@v2
