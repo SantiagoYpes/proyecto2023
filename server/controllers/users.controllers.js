@@ -8,7 +8,7 @@ export const loginUser = async (req, res) => {
     .exec()
     .then((users) => {// Maneja los usuarios encontrados
         const found = users.find(user => user.password == pass)
-        console.log(pass)
+        console.log(found)
         found.type === "teacher" ? res.send("teacher") : res.send("admin")
     })
     .catch((err) => {
