@@ -2,7 +2,6 @@ import styles from "../styles/Contact.module.css";
 import ServiceCardComponent from "@/components/ServiceCardComponent";
 
 export default function Contact() {
-
   const adminInfoCard = {
     title: "Administra tu informacion",
     shortDesc: "¡Gestiona y edita tu información personal y profesional!",
@@ -23,7 +22,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen  justify-center bg-gray-100">
+    <div className="min-h-screen justify-center bg-gray-100">
       <div className={styles.container}>
         <div className={styles.title}>
           <h1>Nuestros Servicios</h1>
@@ -48,12 +47,22 @@ export default function Contact() {
       </div>
       <footer className={styles.footer}>
         <div className={styles.footerContainer}>
-          <h2>Contáctantos</h2>
-          <form>
-            <input placeholder="NOMBRE"></input>
-            <input placeholder="E-MAIL"></input>
-            <input placeholder="MENSAJE"></input>
-            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+          <h2 className="">Contáctantos</h2>
+          <form className="flex flex-row gap-4">
+            <input
+              className="mb-1 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="NOMBRE"
+            ></input>
+            <input
+              placeholder="E-MAIL"
+              className="mb-1 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            ></input>
+            <input
+              placeholder="MENSAJE"
+              className="mb-1 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              type="text"
+            ></input>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               ENVIAR
             </button>
           </form>
