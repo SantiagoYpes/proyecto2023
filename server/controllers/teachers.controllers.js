@@ -1,8 +1,12 @@
 import User from "../models/User.js";
 
 export const getTeachers = async (req, res) => {
-  const listTeachers = await User.find();
-  res.send(listTeachers);
+  try {
+    const listTeachers = await User.find();
+    res.send(listTeachers);
+  } catch (error) {
+    res.error(error)
+  }
 };
 
 export const newTeacher = async (req, res) => {
