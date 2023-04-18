@@ -1,7 +1,19 @@
 import styles from "../styles/Contact.module.css";
 import ServiceCardComponent from "@/components/ServiceCardComponent";
+import { useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Contact() {
+
+  const  handleSubmit = async (event) => {
+    event.preventDefault();
+    const token = await reRef.current.executeAsync();
+    reRef.current.reset();
+    alert(`Token: ${token}`)
+  }
+
+  const reRef = useRef();
+
   const adminInfoCard = {
     title: "Administra tu informacion",
     shortDesc: "¡Gestiona y edita tu información personal y profesional!",
@@ -45,7 +57,10 @@ export default function Contact() {
           ></ServiceCardComponent>
         </div>
       </div>
-      <footer className={styles.footer}>
+      <footer
+        className={styles.footer}
+        onSubmit={handleSubmit}
+      >
         <div className={styles.footerContainer}>
           <h2 className="">Contáctantos</h2>
           <form className="flex flex-col gap-4">
@@ -64,9 +79,14 @@ export default function Contact() {
               className="mb-1 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               type="text"
             ></input>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               ENVIAR
             </button>
+            <ReCAPTCHA
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            size="invisible"
+            ref={reRef}
+          />
           </form>
         </div>
       </footer>
