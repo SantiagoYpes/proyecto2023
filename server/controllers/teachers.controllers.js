@@ -1,14 +1,12 @@
-import Teacher from "../models/Teacher.js"
+import User from "../models/User.js"
 
 export const getTeachers = async(req, res) => {
-    const listTeachers = await Teacher.find()
+    const listTeachers = await User.find()
     res.send(listTeachers)
 }
 
 export const newTeacher = async(req,res) => {
-    console.log(req.body)
-    const {ced, name, lastname, subject, email, valuehour, cell, type} = req.body
-    const teacher = new Teacher({ced, name, lastname, subject, email, valuehour, cell, type})
+    const teacher = new User(req.body)
     await teacher.save()
     res.json(teacher)
 }
@@ -19,6 +17,6 @@ export const deleteTeacher = (req,res) => res.send("New teacher updated")
 
 export const teacherId = async(req,res)=>{
     const {id} = req.params
-    const teacher = await Teacher.findById(id)
+    const teacher = await User.findById(id)
     res.send(teacher)
-  }
+}

@@ -1,5 +1,6 @@
 import express from "express";
 import adminRoutes from "./routes/admin.routes.js";
+import userRoutes from "./routes/user.routes.js";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
@@ -14,5 +15,6 @@ app.use(express.json())
 
 app.use(cors(corsOptions));
 app.use(adminRoutes)
+app.use(userRoutes)
 
 export default app
