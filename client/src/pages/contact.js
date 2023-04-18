@@ -2,6 +2,10 @@ import styles from "../styles/Contact.module.css";
 import ServiceCardComponent from "@/components/ServiceCardComponent";
 
 export default function Contact() {
+  const adminInfoCard = {
+    "title": "Administra tu informacion",
+    "shortDesc": "¡Gestiona y edita tu información personal y profesional!"
+  }
   return (
     <div className="min-h-screen  justify-center bg-gray-100">
       <div className={styles.container}>
@@ -9,7 +13,7 @@ export default function Contact() {
           <h1>Nuestros Servicios</h1>
         </div>
         <div className={styles.cards}>
-          <ServiceCardComponent></ServiceCardComponent>
+          <ServiceCardComponent title={adminInfoCard.title} shortDesc = {adminInfoCard.shortDesc}></ServiceCardComponent>
           <ServiceCardComponent></ServiceCardComponent>
           <ServiceCardComponent></ServiceCardComponent>
         </div>

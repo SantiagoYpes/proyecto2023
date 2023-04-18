@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../styles/ServiceCardComponent.module.css";
 
-export default function ServiceCardComponent() {
+export default function ServiceCardComponent(props) {
+  const { title, shortDesc } = props;
   return (
     <div className="max-w-sm p-6 bg-white rounded-lg shadow-2xl dark:bg-white-800 dark:border-gray-700 mt-10 text-center">
       <svg
@@ -20,10 +21,10 @@ export default function ServiceCardComponent() {
         ></path>
       </svg>
       <h5 class="mb-2 text-2xl font-semibold tracking-tight text-black text-center">
-        Titulo del card
+        { title }
       </h5>
       <p class="mb-3 font-normal text-black">
-        short description of the card aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        { shortDesc }
       </p>
       <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
         Acerca de la U
