@@ -7,125 +7,31 @@ export default function Contact() {
           <h1>Nuestros Servicios</h1>
         </div>
         <div className={styles.cards}>
-          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-10">
+          <div className="max-w-sm p-6 bg-white rounded-lg shadow-2xl dark:bg-white-800 dark:border-gray-700 mt-10 text-center">
             <svg
-              class="w-10 h-10 mb-2 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              fill="currentColor"
-              viewBox="0 0 20 20"
+              className={styles.svg}
+              fill="none"
+              stroke="red"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
-                fill-rule="evenodd"
-                d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z"
-                clip-rule="evenodd"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
               ></path>
-              <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path>
             </svg>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                Need a help in Claim?
-              </h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
-              Go to this step by step guideline process on how to certify for
-              your weekly benefits:
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-black text-center">
+              Titulo del card
+            </h5>
+            <p class="mb-3 font-normal text-black">
+              short description of the card aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
             </p>
-            <a
-              href="#"
-              class="inline-flex items-center text-blue-600 hover:underline"
-            >
-              See our guideline
-              <svg
-                class="w-5 h-5 ml-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-              </svg>
-            </a>
-          </div>
-          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-10">
-            <svg
-              class="w-10 h-10 mb-2 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z"
-                clip-rule="evenodd"
-              ></path>
-              <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path>
-            </svg>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                Need a help in Claim?
-              </h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
-              Go to this step by step guideline process on how to certify for
-              your weekly benefits:
-            </p>
-            <a
-              href="#"
-              class="inline-flex items-center text-blue-600 hover:underline"
-            >
-              See our guideline
-              <svg
-                class="w-5 h-5 ml-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-              </svg>
-            </a>
-          </div>
-          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-10">
-            <svg
-              class="w-10 h-10 mb-2 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z"
-                clip-rule="evenodd"
-              ></path>
-              <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path>
-            </svg>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                Need a help in Claim?
-              </h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
-              Go to this step by step guideline process on how to certify for
-              your weekly benefits:
-            </p>
-            <a
-              href="#"
-              class="inline-flex items-center text-blue-600 hover:underline"
-            >
-              See our guideline
-              <svg
-                class="w-5 h-5 ml-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-              </svg>
-            </a>
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              Acerca de la U
+            </button>
           </div>
         </div>
       </div>
@@ -136,7 +42,9 @@ export default function Contact() {
             <input placeholder="NOMBRE"></input>
             <input placeholder="E-MAIL"></input>
             <input placeholder="MENSAJE"></input>
-            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">ENVIAR</button>
+            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+              ENVIAR
+            </button>
           </form>
         </div>
       </footer>
