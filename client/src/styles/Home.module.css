@@ -20,10 +20,10 @@
 .mainContainer {
     display: flex;
     flex-direction: column;
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    background-color: rgb(221, 219, 219); /* Fallback color */
+    background-color: rgba(99, 99, 99, 0.4); /* Black w/opacity/see-through */
     font-weight:bolder;
-    border-radius: 100px;
+    border-radius: 50px;
     position: absolute;
     top: 25%;
     left: 50%;
@@ -31,11 +31,27 @@
     z-index: 2;
     height: 40%;
     width: 30%;
-    padding: 3%;
     text-align: center;
     justify-content: center;
     align-items: center;
-    gap: 5%;
+    gap: 8%;
+}
+
+.title{
+  font-family: 'Raleway', sans-serif;
+  font-size: 80px;
+}
+
+.subtitle{
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+  font-weight:normal;
+  margin-top: -10%;
+}
+
+.text{
+  font-family: 'Raleway', sans-serif;
+  font-weight: lighter;
 }
 
 .footer {
@@ -54,7 +70,7 @@
 }
 
 .footerContainer{
-    width: 80%;
+    width: 60%;
     color: white;
     height: 50%;
     display: flex;
@@ -62,3 +78,4 @@
     align-items: center;
     justify-content: center;
 }
+
