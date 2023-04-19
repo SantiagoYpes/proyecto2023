@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-
+import { Toaster, toast } from "react-hot-toast";
 import Link from "next/link";
 import axios from "axios";
-
+import Alert from "@/components/Alert";
 
 export default function LogIn() {
-  const router = useRouter()
+  const [status, setStatus] = useState([])
+  const router = useRouter();
   const [postForm, setDatosFormulario] = useState({
     email: "",
     pass: "",
@@ -18,22 +19,26 @@ export default function LogIn() {
     setDatosFormulario({ ...postForm, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    setStatus("show")
     event.preventDefault();
-
-    // Dentro de la función handleSubmit del componente Formulario
     const url = "http://localhost:4000/login";
-    axios
-      .post(url,postForm)
+    await axios
+      .post(url, postForm)
       .then((response) => {
-        const type = response.data
-        console.log(type)
-        type === "teacher" ? router.push("/guide") : alert("unknown")
-
+        setStatus("hidden")
+        const type = response.data;
+        console.log(type);
+        type === "teacher" ? router.push("/guide") : alert("unknown");
       })
       .catch((error) => {
+        setStatus("hidden")
         console.error("Error al enviar la solicitud axios.get:", error);
+        handleError();
       });
+  };
+  const handleError = () => {
+    toast((t) => <Alert t={t} message ="Ocurrió un error al iniciar sesión, por favor verifica tus credenciales"/>);
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 text-[#000000]">
@@ -83,7 +88,20 @@ export default function LogIn() {
             </Link>
           </p>
         </form>
+        <br></br>
+        <center>
+          <div
+            className = { status == "show" ? "inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" : "hidden inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"}  
+            
+            role="status"
+          >
+            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+              Loading...
+            </span>
+          </div>
+        </center>
       </div>
+      <Toaster />
     </div>
   );
 }

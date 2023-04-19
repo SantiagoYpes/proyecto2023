@@ -99,7 +99,7 @@ export default function Profile() {
                   pattern="[0-9]*"
                   id="phone"
                   class="w-full px-3 py-2 pl-10 pr-4 border border-gray-300 rounded-md focus:outline-none focus:border-[#1F6768] text-[#000000]"
-                  placeholder={teacher.valuehour}
+                  value={teacher.valuehour}
                 />
               </div>
               <button
