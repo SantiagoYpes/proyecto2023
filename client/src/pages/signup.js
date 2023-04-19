@@ -2,7 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import axios from "axios";
-
+import  Alert from "../components/Alert";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function SingUp() {
   const router = useRouter();
@@ -32,14 +33,17 @@ export default function SingUp() {
       .post(url,postForm)
       .then((response) => {
         const data = response.data
+        handleAlert("Usuario Creado con id: "+data)
         console.log(data)
-
       })
       .catch((error) => {
+         handleAlert("Ocurrió un error al registrar usuario, por favor verifica tus datos")
         console.error("Error al enviar la solicitud axios.get:", error);
       });
   };
-
+  const handleAlert = (message) => {
+    toast((t) => <Alert t={t} message ={message}/>);
+  };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 text-[#000000]">
       <div className="bg-white shadow-md rounded-md p-8 max-w-md w-full">
@@ -151,6 +155,7 @@ export default function SingUp() {
           </p>
         </form>
       </div>
+      <Toaster/>
     </div>
   );
 }

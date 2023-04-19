@@ -12,6 +12,7 @@ export const loginUser = async (req, res) => {
         found.type === "teacher" ? res.send("teacher") : res.send("admin")
     })
     .catch((err) => {
-      console.log(err); // Maneja el error
+      console.log(err)
+      res.send(err) // Maneja el error
     });
 };
