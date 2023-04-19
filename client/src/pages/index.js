@@ -5,9 +5,12 @@ export default function Home() {
     <div className={styles.body}> 
       <div className={styles.bgImage}></div>  
       <div class="absolute top-0 right-0 mt-4 mr-4">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a href="/login" class="bg-[#1F6768] hover:bg-[#EE2737] text-white font-bold py-2 px-4 rounded mr-3">
           Iniciar sesión
-        </button>
+        </a>
+        <a href = "/signup" class=" bg-[#EE2737] hover:bg-[#1F6768] text-white font-bold py-2 px-4 rounded">
+          Registrarse
+        </a>
       </div>
       <div className={styles.mainContainer}>    
         <h1 className={styles.title}>ADMIN-360</h1>
