@@ -5,18 +5,23 @@ export const getTeachers = async (req, res) => {
     const listTeachers = await User.find();
     res.send(listTeachers);
   } catch (error) {
-    res.error(error)
+    res.error(error);
   }
 };
 
 export const newTeacher = async (req, res) => {
   try {
-    const teacher = new User(req.body);
-    await teacher.save();
-    console.log("Profesor Creado")
-    res.send(teacher._id);
+    if (req.body.ced === "") {
+      res.status(500).send(error);
+    } else {
+      console.log(req.body);
+      const user = new User(req.body);
+      await user.save();
+      console.log("Profesor Creado");
+      res.send(user._id);
+    }
   } catch (error) {
-    res.send(error);
+    res.status(500).send(error);
   }
 };
 
@@ -31,6 +36,6 @@ export const teacherId = async (req, res) => {
     console.log("Búsqueda terminada");
     res.json(teacher);
   } catch (error) {
-    res.send(error)
+    res.send(error);
   }
 };

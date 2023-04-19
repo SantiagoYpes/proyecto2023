@@ -8,11 +8,15 @@ export const loginUser = async (req, res) => {
     .exec()
     .then((users) => {// Maneja los usuarios encontrados
         const found = users.find(user => user.password == pass)
-        console.log(found)
-        found.type === "teacher" ? res.send("teacher") : res.send("admin")
+        if (found) {
+          found.type === "teacher" ? res.send("teacher") : res.send("admin")
+        }
+        else{
+          res.status(500).send(error)
+        }
     })
     .catch((err) => {
       console.log(err)
-      res.send(err) // Maneja el error
+      res.status(500).send(error)// Maneja el error
     });
 };

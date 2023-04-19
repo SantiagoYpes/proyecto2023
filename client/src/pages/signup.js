@@ -29,6 +29,7 @@ export default function SingUp() {
 
     // Dentro de la función handleSubmit del componente Formulario
     const url = "http://localhost:4000/newTeacher";
+    console.log(postForm);
     await axios
       .post(url,postForm)
       .then((response) => {
