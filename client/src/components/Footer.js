@@ -12,7 +12,7 @@ export default function Footer() {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal transition-colors text-[#000000] hover:text-blue-500 focus:text-blue-500"
             >
               About Us
             </Typography>
@@ -22,7 +22,7 @@ export default function Footer() {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal transition-colors text-[#000000] hover:text-blue-500 focus:text-blue-500"
             >
               License
             </Typography>
@@ -32,7 +32,7 @@ export default function Footer() {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal transition-colors text-[#000000] hover:text-blue-500 focus:text-blue-500"
             >
               Contribute
             </Typography>
@@ -42,7 +42,7 @@ export default function Footer() {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal transition-colors text-[#000000] hover:text-blue-500 focus:text-blue-500"
             >
               Contact Us
             </Typography>
@@ -50,7 +50,7 @@ export default function Footer() {
         </ul>
       </div>
       <hr className="my-8 border-blue-gray-50" />
-      <Typography color="blue-gray" className="text-center font-normal">
+      <Typography color="blue-gray" className="text-center font-normal text-[#000000]">
         &copy; 2023 Material Tailwind
       </Typography>
     </footer>

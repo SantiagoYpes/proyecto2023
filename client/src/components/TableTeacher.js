@@ -29,7 +29,7 @@ function TableTeacher() {
   };
   const handleEdit = (id) =>{
     setTeacher(id)
-    router.push('/profile')
+    router.push('/profileteacher')
   }
   return (
     <div>
