@@ -1,6 +1,7 @@
 import { contextTeacher } from "../context/TeacherContext";
 import { useContext } from "react";
 import { useEffect } from "react";
+import Footer from "../components/Footer";
 import axios from "axios";
 export default function Profile() {
   const { teacher, setTeacher } = useContext(contextTeacher);
@@ -111,7 +112,8 @@ export default function Profile() {
             </form>
           </div>
         </div>
-      </div>
+      </div> 
+      <Footer/>
     </div>
   );
 }
