@@ -64,7 +64,8 @@ export default function SingUp() {
                 type="text"
                 id="firstName"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#EE2737]"
-                placeholder="Tu nombre"
+                placeholder="Tu nombre" 
+                required
               />
             </div>
             <div className="mb-4">
@@ -78,7 +79,8 @@ export default function SingUp() {
                 type="text"
                 id="lastName"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#EE2737]"
-                placeholder="Tus apellidos"
+                placeholder="Tus apellidos" 
+                required
               />
             </div>
           </div>
@@ -95,7 +97,8 @@ export default function SingUp() {
               pattern="[0-9]*"
               id="phone"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#EE2737]"
-              placeholder="Tu cédula"
+              placeholder="Tu cédula" 
+              required
             />
           </div>
           <div className="mb-4">
@@ -111,7 +114,8 @@ export default function SingUp() {
               pattern="[0-9]*"
               id="phone"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#EE2737]"
-              placeholder="Tu celular"
+              placeholder="Tu celular" 
+              required
             />
           </div>
           <div className="mb-4">
@@ -126,6 +130,7 @@ export default function SingUp() {
               id="email"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#EE2737]"
               placeholder="Tu correo electrónico"
+              required
             />
           </div>
           <div className="mb-4">
@@ -140,7 +145,11 @@ export default function SingUp() {
               id="password"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#EE2737]"
               placeholder="Tu contraseña"
+              required
             />
+            <p class="text-gray-600 text-xs italic">
+              La contraseña debe tener al menos 8 caracteres y contener letras y números.
+            </p>
           </div>
           <button
             type="submit"

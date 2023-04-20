@@ -7,7 +7,7 @@ function Alert({ t, message}) {
       <center>
         <div clasName="flex">
           <button
-            className="bg-blue-700 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
+            className="bg-[#1F6768] hover:bg-[#EE2737]  text-white font-bold py-2 px-4 rounded"
             onClick={() => toast.dismiss(t.id)}
           >
             Aceptar
