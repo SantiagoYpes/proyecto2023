@@ -1,25 +1,26 @@
 import styles from "../styles/Homeadmin.module.css";
-
+import ServiceCardComponent from "../components/ServiceCardComponent";
 export default function Home() {
   return (
     <div className={styles.body}>
       <div className={styles.bgImage}></div>
       <div className={styles.mainContainer}>
-        <h1 className={styles.title}>ADMIN-360</h1>
-        <h3 className={styles.subtitle}>Espacio unico para administradores</h3>
-        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-          Acerca de la U
-        </button>
-      </div>
-      <footer className={styles.footer}>
-        <div className={styles.footerContainer}>
-          <h2 className={styles.subtitle}>¡Sitio único y exclusivo para docentes!</h2>
-          <p className={styles.text}>
-            Desde aqui podras observar información acerca de tu contrato 
-            y demas informacion laboral y profesional.
-          </p>
+        <div>
+          <div class="grid grid-cols-3 gap-4">
+            <ServiceCardComponent
+              title="Consulta la información del Docente"
+              shortDesc="¡Consulta la información del Docente!"
+            />
+            <ServiceCardComponent
+              title="Registra un docente"
+              shortDesc="¡Desde aquí el administrador podrá registrar docentes!"
+            />
+            <ServiceCardComponent 
+            title="Visualiza los cursos"
+            shortDesc="¡Añade docentes a nuevos  segun el numero de modulos!"/>
+          </div>
         </div>
-      </footer>
+      </div>
     </div>
   );
 }

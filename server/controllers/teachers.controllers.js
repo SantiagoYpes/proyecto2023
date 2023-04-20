@@ -2,7 +2,14 @@ import User from "../models/User.js";
 
 export const getTeachers = async (req, res) => {
   try {
-    const listTeachers = await User.find();
+    const list = await User.find();
+    let listTeachers = list
+      .filter(function (teacher) {
+        return teacher.type === "teacher";
+      })
+      .map(function (teacher) {
+        return teacher;
+      });
     res.send(listTeachers);
   } catch (error) {
     res.error(error);
@@ -12,7 +19,7 @@ export const getTeachers = async (req, res) => {
 export const newTeacher = async (req, res) => {
   try {
     if (req.body.ced === "") {
-      res.status(500).send(error);
+      res.status(500).send("error");
     } else {
       console.log(req.body);
       const user = new User(req.body);

@@ -12,11 +12,11 @@ export const loginUser = async (req, res) => {
           found.type === "teacher" ? res.send("teacher") : res.send("admin")
         }
         else{
-          res.status(500).send(error)
+          res.status(500).send("error")
         }
     })
     .catch((err) => {
       console.log(err)
-      res.status(500).send(error)// Maneja el error
+      res.status(500).send(err)// Maneja el error
     });
 };
