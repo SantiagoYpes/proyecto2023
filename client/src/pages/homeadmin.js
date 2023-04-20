@@ -15,7 +15,7 @@ export default function Home() {
             <ServiceCardComponent
               title="Registra un docente"
               shortDesc="¡Desde aquí el administrador podrá registrar docentes!"
-              rout="/signup
+              rout="/signup"
             />
             <ServiceCardComponent
               title="Visualiza los cursos"
