@@ -10,14 +10,18 @@ export default function Home() {
             <ServiceCardComponent
               title="Consulta la información del Docente"
               shortDesc="¡Consulta la información del Docente!"
+              rout="/guide"
             />
             <ServiceCardComponent
               title="Registra un docente"
               shortDesc="¡Desde aquí el administrador podrá registrar docentes!"
+              rout="/contact"
             />
-            <ServiceCardComponent 
-            title="Visualiza los cursos"
-            shortDesc="¡Añade docentes a nuevos  segun el numero de modulos!"/>
+            <ServiceCardComponent
+              title="Visualiza los cursos"
+              shortDesc="¡Añade docentes a nuevos  segun el numero de modulos!"
+              rout="/contact"
+            />
           </div>
         </div>
       </div>

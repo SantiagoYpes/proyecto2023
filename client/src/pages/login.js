@@ -29,7 +29,7 @@ export default function LogIn() {
         setStatus("hidden")
         const type = response.data;
         console.log(type);
-        type === "teacher" ? router.push("/guide") : router.push("homeadmin");
+        type === "teacher" ? router.push("/guide") : router.push("/homeadmin");
       })
       .catch((error) => {
         setStatus("hidden")
