@@ -21,8 +21,8 @@ export default function ServiceCardComponent(props) {
       </h5>
       <p class="mb-3 font-normal text-black">{shortDesc}</p>
       <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-        <Link href="/" class="text-white hover:text-[#1F6768]">
-          Clic aquí.
+        <Link href="/profileteacher" class="text-white hover:text-[#1F6768]">
+          Clic aquí
         </Link>
       </button>
     </div>

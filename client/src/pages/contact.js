@@ -82,13 +82,13 @@ export default function Contact() {
           <ServiceCardComponent
             title={courseInfoCard.title}
             shortDesc={courseInfoCard.shortDesc}
-            icon={courseInfoCard.icon}
-          ></ServiceCardComponent>
+            icon={courseInfoCard.icon} 
+          ></ServiceCardComponent> 
           <ServiceCardComponent
             title={contactInfoCard.title}
             shortDesc={contactInfoCard.shortDesc}
-            icon={contactInfoCard.icon}
-          ></ServiceCardComponent>
+            icon={contactInfoCard.icon} 
+          ></ServiceCardComponent> 
         </div>
       </div>
 
