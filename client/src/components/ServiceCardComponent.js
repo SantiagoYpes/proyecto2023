@@ -20,11 +20,11 @@ export default function ServiceCardComponent(props) {
         {title}
       </h5>
       <p class="mb-3 font-normal text-black">{shortDesc}</p>
-      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-        <Link href="/profileteacher" class="text-white hover:text-[#1F6768]">
+      <Link href={rout} class="text-white hover:text-[#1F6768]">
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
           Clic aquí
-        </Link>
-      </button>
+        </button>
+      </Link>
     </div>
   );
 }

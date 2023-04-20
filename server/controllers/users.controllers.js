@@ -9,7 +9,8 @@ export const loginUser = async (req, res) => {
     .then((users) => {// Maneja los usuarios encontrados
         const found = users.find(user => user.password == pass)
         if (found) {
-          found.type === "teacher" ? res.send("teacher") : res.send("admin")
+          const response = {id:found._id, type:found.type}
+          res.send(response)
         }
         else{
           res.status(500).send("error")

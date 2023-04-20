@@ -4,9 +4,12 @@ import { Toaster, toast } from "react-hot-toast";
 import Link from "next/link";
 import axios from "axios";
 import Alert from "@/components/Alert";
+import { useContext } from "react";
+import { contextTeacher } from "@/context/TeacherContext";
 
 export default function LogIn() {
-  const [status, setStatus] = useState([])
+  const { active, setActive } = useContext(contextTeacher);
+  const [status, setStatus] = useState([]);
   const router = useRouter();
   const [postForm, setDatosFormulario] = useState({
     email: "",
@@ -20,25 +23,33 @@ export default function LogIn() {
   };
 
   const handleSubmit = async (event) => {
-    setStatus("show")
+    setStatus("show");
     event.preventDefault();
     const url = "http://localhost:4000/login";
     await axios
       .post(url, postForm)
       .then((response) => {
-        setStatus("hidden")
-        const type = response.data;
-        console.log(type);
-        type === "teacher" ? router.push("/guide") : router.push("/contact");
+        setStatus("hidden");
+        const teacher = response.data;
+        console.log(teacher);
+        teacher.type === "teacher"
+          ? router.push("/HomePage")
+          : router.push("/HomePageAdmin");
+        setActive(teacher.id);
       })
       .catch((error) => {
-        setStatus("hidden")
+        setStatus("hidden");
         console.error("Error al enviar la solicitud axios.get:", error);
         handleError();
       });
   };
   const handleError = () => {
-    toast((t) => <Alert t={t} message ="Ocurrió un error al iniciar sesión, por favor verifica tus credenciales"/>);
+    toast((t) => (
+      <Alert
+        t={t}
+        message="Ocurrió un error al iniciar sesión, por favor verifica tus credenciales"
+      />
+    ));
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 text-[#000000]">
@@ -52,6 +63,7 @@ export default function LogIn() {
               Correo electrónico
             </label>
             <input
+              required
               type="email"
               id="email"
               name="email"
@@ -66,6 +78,7 @@ export default function LogIn() {
               Contraseña
             </label>
             <input
+              required
               type="password"
               name="pass"
               id="password"
@@ -91,8 +104,11 @@ export default function LogIn() {
         <br></br>
         <center>
           <div
-            className = { status == "show" ? "inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" : "hidden inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"}  
-            
+            className={
+              status == "show"
+                ? "inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                : "hidden inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            }
             role="status"
           >
             <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
