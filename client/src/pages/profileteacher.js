@@ -1,6 +1,6 @@
 import { contextTeacher } from "../context/TeacherContext";
 import { useContext } from "react";
-import { useEffect } from "react";
+import { useEffect } from "react"; 
 import Footer from "../components/Footer";
 import axios from "axios";
 export default function Profile() {
@@ -102,14 +102,19 @@ export default function Profile() {
                   class="w-full px-3 py-2 pl-10 pr-4 border border-gray-300 rounded-md focus:outline-none focus:border-[#1F6768] text-[#000000]"
                   value={teacher.valuehour}
                 />
-              </div>
+              </div> 
+              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar documento</label>
+              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+                                                                        focus:border-indigo-300 focus:ring focus:ring-indigo-200 
+                                                                        focus:ring-opacity-50" 
+              />
               <button
                 type="submit"
                 className="w-full py-2 px-4 bg-[#1F6768] hover:bg-[#EE2737] text-white rounded-md font-semibold focus:outline-none"
-              >
+              > 
                 Actualizar
               </button>
-            </form>
+            </form>  
           </div>
         </div>
       </div> 
