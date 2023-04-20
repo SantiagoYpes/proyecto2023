@@ -8,7 +8,7 @@ router.get('/hello', (req,res) => res.send("Hello World"))
 router.get('/teachers', getTeachers)
 router.post('/newTeacher', newTeacher)
 router.put('/putTeacher', updateTeacher)
-router.delete('/deleteTeacher', deleteTeacher)
+router.delete('/deleteTeacher/:id', deleteTeacher)
 
 router.get('/teacher/:id', teacherId)
 

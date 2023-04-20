@@ -13,6 +13,8 @@ function TableTeacher() {
   const router = useRouter()
   const [teachers, setTeachers] = useState([]);
   const url = "http://localhost:4000/teachers";
+
+  
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(url);

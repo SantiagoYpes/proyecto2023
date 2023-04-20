@@ -12,14 +12,14 @@ export const getTeachers = async (req, res) => {
       });
     res.send(listTeachers);
   } catch (error) {
-    res.error(error);
+    res.status(400).error(error);
   }
 };
 
 export const newTeacher = async (req, res) => {
   try {
     if (req.body.ced === "") {
-      res.status(500).send("error");
+      res.status(400).send("error");
     } else {
       console.log(req.body);
       const user = new User(req.body);
@@ -28,13 +28,23 @@ export const newTeacher = async (req, res) => {
       res.send(user._id);
     }
   } catch (error) {
-    res.status(500).send(error);
+    res.status(400).send(error);
   }
 };
 
 export const updateTeacher = (req, res) => res.send("Teacher updated");
 
-export const deleteTeacher = (req, res) => res.send("New teacher updated");
+export const deleteTeacher = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await User.findByIdAndDelete(id);
+    res.send("Profesor con ID" + id + "Correctamente eliminado")
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("Ocurrió un error", error)
+  }
+  
+};
 
 export const teacherId = async (req, res) => {
   try {
@@ -43,6 +53,6 @@ export const teacherId = async (req, res) => {
     console.log("Búsqueda terminada");
     res.json(teacher);
   } catch (error) {
-    res.send(error);
+    res.status(400).send(error);
   }
 };
