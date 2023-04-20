@@ -6,7 +6,7 @@ import { URI } from "./config.js";
       mongoose.set('strictQuery', true)
       const db = await mongoose.connect(URI)
       console.log("DB connected", db.connection.name )
-      process.abort();
+      process.exit();
   }
   catch (error){
       console.error(error)
