@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 export default function Contact() {
   const initialFormValues = { name: "", email: "", message: "" };
   const [formValues, setFormValues] = useState(initialFormValues);
-  const [formErrors, setFormErrors] = useState({});
+  const [formErrors, setFormErrors] = useState([]);
   const reRef = useRef();
 
   const handleSubmit = async (e) => {
@@ -22,23 +22,28 @@ export default function Contact() {
     if (Object.keys(formErrors).length === 0) {
       console.log(formValues);
     } else {
-      Swal.fire({icon:"error", text:"Campo requerido faltante en el formulario D:"});
+      let errorMessage = "";
+      formErrors.forEach((error) => {
+        errorMessage += `♦♦♦${error} `
+        errorMessage += "\n"
+      })
+      Swal.fire({ icon: "error", text: errorMessage});
     }
   }, [formErrors]);
 
   const validateFields = (values) => {
-    const errors = {};
+    const errors = [];
     const emailRegex =
       "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/";
 
     if (!values.name) {
-      errors.name = "El nombre es requerido para enviar el formulario.";
+      errors.push("El nombre es requerido para enviar el formulario.");
     }
     if (!values.email) {
-      errors.email = "El correo es requerido para enviar el formulario.";
+      errors.push("El correo es requerido para enviar el formulario.");
     }
     if (!values.message) {
-      errors.message = "El mensaje es requerido para enviar el formulario.";
+      errors.push("El mensaje es requerido para enviar el formulario.");
     }
     return errors;
   };
