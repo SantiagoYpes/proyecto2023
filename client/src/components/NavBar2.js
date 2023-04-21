@@ -7,20 +7,23 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { useRouter } from "next/router";
+
 import Link from "next/link";
 
 export default function Example() {
   const router = useRouter()
   const [openNav, setOpenNav] = useState(false);
-  const handleHome= ()=>{
-    router.push("/HomePage")
-  }
+
   useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
+
+  const handleHome= ()=>{
+    router.push("/HomePage")
+  }
 
   const navList = (
     <ul onClick={handleHome} className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -30,7 +33,7 @@ export default function Example() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-          Inicio
+        Inicio
       </Typography>
     </ul>
   );

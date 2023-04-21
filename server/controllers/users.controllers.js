@@ -8,13 +8,13 @@ export const loginUser = async (req, res) => {
     .exec()
     .then((users) => {// Maneja los usuarios encontrados
         const found = users.find(user => user.password == pass)
-        if (found) {
+      
           const response = {id:found._id, type:found.type}
+          console.log("encontrado");
           res.send(response)
-        }
-        else{
-          res.status(500).send("error")
-        }
+
+
+        
     })
     .catch((err) => {
       console.log(err)
