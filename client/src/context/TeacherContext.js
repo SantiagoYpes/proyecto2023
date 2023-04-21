@@ -10,9 +10,12 @@ export const useTeacher = () => {
 
 export const TeacherProvider =  ({children}) => {
     const [teacher, setTeacher] = useState()
+    const [active, setActive] = useState()
     return <contextTeacher.Provider value = {{
         teacher,
-        setTeacher
+        setTeacher,
+        active,
+        setActive
     }}>
         {children}
     </contextTeacher.Provider>
