@@ -15,7 +15,7 @@ export default function Home() {
       <div className={styles.mainContainer}>    
         <h1 className={styles.title}>ADMIN-360</h1>
         <h3 className={styles.subtitle}>Espacio unico para profes</h3>
-        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold mb-5 py-2 px-4 rounded">
           Acerca de la U
         </button>
       </div>
