@@ -3,8 +3,10 @@ import { useContext } from "react";
 import { useEffect } from "react"; 
 import Footer from "../components/Footer";
 import axios from "axios";
+import ComplexNavbar from '../components/NavBar2'
 export default function Profile() {
   const { active, setActive } = useContext(contextTeacher);
+  
   console.log(active);
 
   const url = "http://localhost:4000/teacher/" + active;
@@ -19,6 +21,7 @@ export default function Profile() {
   }, []);
   return (
     <div className="min-h-screen  justify-center bg-gray-100">
+      <ComplexNavbar></ComplexNavbar>
       <div class="max-w-2xl mx-auto px-4 py-8">
         <div class="bg-white rounded-lg shadow-lg">
           <div class="flex items-center justify-center bg-[#1F6768] rounded-t-lg px-4 py-8">
