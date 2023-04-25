@@ -25,17 +25,23 @@ export default function LogIn() {
   const handleSubmit = async (event) => {
     setStatus("show");
     event.preventDefault();
+
+    //
+    // console.log(response);
+
     const url = "http://localhost:4000/login";
     await axios
       .post(url, postForm)
-      .then((response) => {
-        setStatus("hidden");
-        const teacher = response.data;
-        console.log(teacher);
-        teacher.type === "teacher"
-          ? router.push("/HomePage")
-          : router.push("/HomePageAdmin");
-        setActive(teacher.id);
+      .then(async (response) => {
+        const result = await axios.post("/api/login", response);
+        console.log(result);
+        // setStatus("hidden");
+        // const teacher = response.data;
+        // console.log(teacher);
+        // teacher.type === "teacher"
+        //   ? router.push("/HomePage")
+        //   : router.push("/HomePageAdmin");
+        // setActive(teacher.id);
       })
       .catch((error) => {
         setStatus("hidden");
