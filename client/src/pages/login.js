@@ -33,15 +33,14 @@ export default function LogIn() {
     await axios
       .post(url, postForm)
       .then(async (response) => {
-        const result = await axios.post("/api/login", response);
-        console.log(result);
-        // setStatus("hidden");
-        // const teacher = response.data;
-        // console.log(teacher);
-        // teacher.type === "teacher"
-        //   ? router.push("/HomePage")
-        //   : router.push("/HomePageAdmin");
-        // setActive(teacher.id);
+        await axios.post("/api/login", response);
+        setStatus("hidden");
+        const validToken = await axios.get("/api/vtoken");
+
+        validToken.type === "teacher"
+          ? router.push("/HomePage")
+          : router.push("/HomePageAdmin");
+        setActive(validToken.id);
       })
       .catch((error) => {
         setStatus("hidden");

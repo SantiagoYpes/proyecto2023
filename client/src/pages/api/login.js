@@ -13,6 +13,7 @@ export default function LoginService(req, res) {
       {
         exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30,
         type: dataFromDB.type,
+        id: dataFromDB.id
       },
       "secret"
     );
@@ -25,7 +26,6 @@ export default function LoginService(req, res) {
         path: "/",
       });
 
-    console.log(serialized);
     res.setHeader("Set-Cookie", serialized);
     return res.json("Creado correctamente");
   }
