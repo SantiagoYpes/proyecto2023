@@ -36,8 +36,7 @@ export default function LogIn() {
         await axios.post("/api/login", response);
         setStatus("hidden");
         const validToken = await axios.get("/api/vtoken");
-
-        validToken.type === "teacher"
+        validToken.data.type === "teacher"
           ? router.push("/HomePage")
           : router.push("/HomePageAdmin");
         setActive(validToken.id);

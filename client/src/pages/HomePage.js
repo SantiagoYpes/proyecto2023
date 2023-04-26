@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import Swal from "sweetalert2";
 
-export default function Contact() {
+export default function HomePage() {
   const initialFormValues = { name: "", email: "", message: "" };
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState([]);
@@ -139,7 +139,7 @@ export default function Contact() {
               ENVIAR
             </button>
             <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              sitekey="6LfkTJslAAAAAI2jUgpk2bkipn_NXSkgmSyX87Xe"
               size="invisible"
               ref={reRef}
             />
