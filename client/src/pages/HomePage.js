@@ -20,7 +20,7 @@ export default function HomePage() {
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0) {
-      console.log(formValues);
+        console.log(formValues);
     } else {
       let errorMessage = "";
       formErrors.forEach((error) => {

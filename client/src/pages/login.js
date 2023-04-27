@@ -25,10 +25,6 @@ export default function LogIn() {
   const handleSubmit = async (event) => {
     setStatus("show");
     event.preventDefault();
-
-    //
-    // console.log(response);
-
     const url = "http://localhost:4000/login";
     await axios
       .post(url, postForm)
@@ -39,7 +35,7 @@ export default function LogIn() {
         validToken.data.type === "teacher"
           ? router.push("/HomePage")
           : router.push("/HomePageAdmin");
-        setActive(validToken.id);
+        setActive(validToken.data.id);
       })
       .catch((error) => {
         setStatus("hidden");
