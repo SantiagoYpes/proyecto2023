@@ -5,7 +5,7 @@ export default function validateToken(req, res) {
 
   try {
     const user = verify(userToken, "secret");
-    return res.json({ id: user.id, type: user.type });
+    return res.json({ id: user.id, type: user.type, ced:user.ced });
   } catch (error) {
     return res.status(401).json({ error: "Invalid token" });
   }
