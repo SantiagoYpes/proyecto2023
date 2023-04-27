@@ -1,12 +1,12 @@
 import { contextTeacher } from "../context/TeacherContext";
 import { useContext } from "react";
-import { useEffect } from "react"; 
+import { useEffect } from "react";
 import Footer from "../components/Footer";
 import axios from "axios";
 import ComplexNavbar from '../components/NavBar2'
 export default function Profile() {
   const { active, setActive } = useContext(contextTeacher);
-  
+
   console.log(active);
 
   const url = "http://localhost:4000/teacher/" + active;
@@ -105,23 +105,43 @@ export default function Profile() {
                   class="w-full px-3 py-2 pl-10 pr-4 border border-gray-300 rounded-md focus:outline-none focus:border-[#1F6768] text-[#000000]"
                   value={active.valuehour}
                 />
-              </div> 
-              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar documento</label>
+              </div>
+              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar copia de la cédula</label>
               <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
                                                                         focus:border-indigo-300 focus:ring focus:ring-indigo-200 
-                                                                        focus:ring-opacity-50" 
+                                                                        focus:ring-opacity-50"
+              />
+              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar RUT</label>
+              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+                                                                        focus:border-indigo-300 focus:ring focus:ring-indigo-200 
+                                                                        focus:ring-opacity-50"
+              />
+              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar hoja de vida</label>
+              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+                                                                        focus:border-indigo-300 focus:ring focus:ring-indigo-200 
+                                                                        focus:ring-opacity-50"
+              />
+              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar formato resgistro cuenta bancaria</label>
+              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+                                                                        focus:border-indigo-300 focus:ring focus:ring-indigo-200 
+                                                                        focus:ring-opacity-50"
               />
               <button
                 type="submit"
                 className="w-full py-2 px-4 bg-[#1F6768] hover:bg-[#EE2737] text-white rounded-md font-semibold focus:outline-none"
-              > 
+              >
                 Actualizar
               </button>
-            </form>  
+              <label for="photo-upload" class="relative cursor-pointer bg-gray-300 rounded-md font-medium text-white hover:bg-gray-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                <span>Adjuntar foto</span>
+                <input id="photo-upload" name="photo-upload" type="file" class="sr-only" />
+              </label>
+              <div class="mt-2" id="photo-preview"></div>
+            </form>
           </div>
         </div>
-      </div> 
-      <Footer/>
+      </div>
+      <Footer />
     </div>
   );
 }
