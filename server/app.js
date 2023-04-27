@@ -3,6 +3,7 @@ import adminRoutes from "./routes/admin.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import fileUpload from "express-fileupload";
 import cors from "cors";
 const app = express()
 
@@ -12,7 +13,10 @@ const corsOptions = {
     allowedHeaders: 'Content-Type',
   };
 app.use(express.json())
-
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: './upload'
+}))
 app.use(cors(corsOptions));
 app.use(adminRoutes)
 app.use(userRoutes)

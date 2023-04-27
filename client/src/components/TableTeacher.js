@@ -9,7 +9,7 @@ import { contextTeacher } from "../context/TeacherContext";
 
 function TableTeacher() {
   const {setTeacher} = useContext(contextTeacher)
-  
+  const {setContract} = useContext(contextTeacher)
   const router = useRouter()
   const [teachers, setTeachers] = useState([]);
   const url = "http://localhost:4000/teachers";
@@ -29,8 +29,9 @@ function TableTeacher() {
       <AlertDeleteTeacher t={t} id_teacher={id}/>
     ));
   };
-  const handleEdit = (id) =>{
+  const handleEdit = (id,ced) =>{
     setTeacher(id)
+    setContract(ced)
     router.push('/profile')
   }
   return (
@@ -79,7 +80,7 @@ function TableTeacher() {
               <td className="p-2 border border-gray-300 hidden lg:table-cell flex space-x-2">
                 <button 
                 className="bg-[#1F6768] hover:bg-green-900 text-white font-bold py-2 px-2 rounded"
-                onClick={()=>handleEdit(teacher._id)}>
+                onClick={()=>handleEdit(teacher._id,teacher.ced)}>
                   Editar
                 </button>
                 <button
