@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useEffect } from "react"; 
-import tablecontract from "../components/tablecontract";
+import tablecontract from "../components/TableContract";
 import Footer from "../components/Footer"; 
 import axios from "axios";
 export default function Profile() {
@@ -29,7 +29,6 @@ export default function Profile() {
         Gestión de Docentes
       </Typography>
     </center>
-    <tablecontract></tablecontract>
     <Footer/>
   </div>
   );
