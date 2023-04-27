@@ -7,11 +7,10 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { useRouter } from "next/router";
-
-import Link from "next/link";
+import axios from "axios";
 
 export default function Example() {
-  const router = useRouter()
+  const router = useRouter();
   const [openNav, setOpenNav] = useState(false);
 
   useEffect(() => {
@@ -21,12 +20,15 @@ export default function Example() {
     );
   }, []);
 
-  const handleHome= ()=>{
-    router.push("/HomePage")
-  }
+  const handleHome = () => {
+    router.push("/HomePage");
+  };
 
   const navList = (
-    <ul onClick={handleHome} className="mb-4 mt-2 ml-10 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <ul
+      onClick={handleHome}
+      className="mb-4 mt-2 ml-10 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6"
+    >
       <Typography
         as="li"
         variant="small"
@@ -54,6 +56,11 @@ export default function Example() {
           variant="gradient"
           size="sm"
           className="bg-red-500 hidden lg:inline-block"
+          onClick={async () => {
+            const response = await axios.post("/api/logout").finally(() => {
+              router.push("/login");
+            });
+          }}
         >
           <span className="bg-red">Cerrar Sesión</span>
         </Button>

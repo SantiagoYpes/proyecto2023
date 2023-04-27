@@ -28,14 +28,14 @@ export default function LogIn() {
     const url = "http://localhost:4000/login";
     await axios
       .post(url, postForm)
-      .then((response) => {
+      .then(async (response) => {
+        await axios.post("/api/login", response);
         setStatus("hidden");
-        const teacher = response.data;
-        console.log(teacher);
-        teacher.type === "teacher"
+        const validToken = await axios.get("/api/vtoken");
+        validToken.data.type === "teacher"
           ? router.push("/HomePage")
           : router.push("/HomePageAdmin");
-        setActive(teacher.id);
+        setActive(validToken.data.id);
       })
       .catch((error) => {
         setStatus("hidden");
