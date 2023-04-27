@@ -19,7 +19,8 @@ function PhotoUpload() {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center"> 
+        <h2 class="text-2xl font-bold">Foto de perfil</h2>
       {photoPreview && (
         <img src={photoPreview} alt="Vista previa de la foto de perfil" className="object-contain w-52 h-52 object-cover rounded-full border-4 border-white mt-4" />
       )} 

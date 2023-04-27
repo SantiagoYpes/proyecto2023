@@ -26,8 +26,7 @@ export default function Profile() {
       <ComplexNavbar></ComplexNavbar>
       <div class="max-w-2xl mx-auto px-4 py-8">
         <div class="bg-white rounded-lg shadow-lg">
-          <div class="flex items-center justify-center bg-[#1F6768] rounded-t-lg px-4 py-8"> 
-          
+          <div class="flex items-center justify-center bg-[#1F6768] rounded-t-lg px-4 py-8">   
           <PhotoUpload></PhotoUpload> 
           </div>
           <div class="px-6 py-4">
