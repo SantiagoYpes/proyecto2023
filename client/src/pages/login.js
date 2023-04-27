@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { contextTeacher } from "@/context/TeacherContext";
 
 export default function LogIn() {
-  const { active, setActive } = useContext(contextTeacher);
+  const { active, setActive, setContract, contract } = useContext(contextTeacher);
   const [status, setStatus] = useState([]);
   const router = useRouter();
   const [postForm, setDatosFormulario] = useState({
@@ -31,11 +31,13 @@ export default function LogIn() {
       .then((response) => {
         setStatus("hidden");
         const teacher = response.data;
-        console.log(teacher);
+        
+        setActive(teacher.id);
+        setContract(teacher.ced)
         teacher.type === "teacher"
           ? router.push("/HomePage")
           : router.push("/HomePageAdmin");
-        setActive(teacher.id);
+        
       })
       .catch((error) => {
         setStatus("hidden");

@@ -8,9 +8,6 @@ import axios from "axios";
 import ComplexNavbar from '../components/NavBar2'
 export default function Profile() {
   const { active, setActive } = useContext(contextTeacher);
-
-  console.log(active);
-
   const url = "http://localhost:4000/teacher/" + active;
   useEffect(() => {
     const fetchData = async () => {
