@@ -106,7 +106,22 @@ export default function Profile() {
                   value={active.valuehour}
                 />
               </div> 
-              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar documento</label>
+              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar copia de la cédula</label>
+              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+                                                                        focus:border-indigo-300 focus:ring focus:ring-indigo-200 
+                                                                        focus:ring-opacity-50" 
+              /> 
+              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar RUT</label>
+              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+                                                                        focus:border-indigo-300 focus:ring focus:ring-indigo-200 
+                                                                        focus:ring-opacity-50" 
+              /> 
+              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar hoja de vida</label>
+              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+                                                                        focus:border-indigo-300 focus:ring focus:ring-indigo-200 
+                                                                        focus:ring-opacity-50" 
+              />
+              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar formato resgistro cuenta bancaria</label>
               <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
                                                                         focus:border-indigo-300 focus:ring focus:ring-indigo-200 
                                                                         focus:ring-opacity-50" 
