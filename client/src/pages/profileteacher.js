@@ -1,16 +1,19 @@
 import { contextTeacher } from "../context/TeacherContext";
 import { useContext } from "react";
-import { useEffect } from "react"; 
-import { useState } from 'react';
-import Footer from "../components/Footer"; 
+import { useEffect } from "react";
+import Footer from "../components/Footer";
 import PhotoUpload from "../components/PhotoUpload";
 import axios from "axios";
-import ComplexNavbar from '../components/NavBar2'
+import ComplexNavbar from "../components/NavBar2";
 export default function Profile() {
   const { active, setActive } = useContext(contextTeacher);
-  const url = "http://localhost:4000/teacher/" + active;
+
   useEffect(() => {
+
     const fetchData = async () => {
+      const validToken = await axios.get("/api/vtoken");
+      setActive(validToken.data.id);
+      const url = "http://localhost:4000/teacher/" + active;
       const result = await axios.get(url);
       setActive(result.data);
       console.log(result);
@@ -23,8 +26,8 @@ export default function Profile() {
       <ComplexNavbar></ComplexNavbar>
       <div class="max-w-2xl mx-auto px-4 py-8">
         <div class="bg-white rounded-lg shadow-lg">
-          <div class="flex items-center justify-center bg-[#1F6768] rounded-t-lg px-4 py-8">   
-          <PhotoUpload></PhotoUpload> 
+          <div class="flex items-center justify-center bg-[#1F6768] rounded-t-lg px-4 py-8">
+            <PhotoUpload></PhotoUpload>
           </div>
           <div class="px-6 py-4">
             <h2 class="text-2xl font-bold text-gray-800">Perfil del docente</h2>
@@ -101,26 +104,50 @@ export default function Profile() {
                   value={active.valuehour}
                 />
               </div>
-              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar copia de la cédula</label>
-              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+              <label class="block text-gray-800 font-bold mb-2" for="documento">
+                Adjuntar copia de la cédula
+              </label>
+              <input
+                id="documento"
+                name="documento"
+                type="file"
+                class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
                                                                         focus:border-indigo-300 focus:ring focus:ring-indigo-200 
                                                                         focus:ring-opacity-50"
               />
-              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar RUT</label>
-              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+              <label class="block text-gray-800 font-bold mb-2" for="documento">
+                Adjuntar RUT
+              </label>
+              <input
+                id="documento"
+                name="documento"
+                type="file"
+                class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
                                                                         focus:border-indigo-300 focus:ring focus:ring-indigo-200 
                                                                         focus:ring-opacity-50"
               />
-              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar hoja de vida</label>
-              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+              <label class="block text-gray-800 font-bold mb-2" for="documento">
+                Adjuntar hoja de vida
+              </label>
+              <input
+                id="documento"
+                name="documento"
+                type="file"
+                class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
                                                                         focus:border-indigo-300 focus:ring focus:ring-indigo-200 
                                                                         focus:ring-opacity-50"
               />
-              <label class="block text-gray-800 font-bold mb-2" for="documento">Adjuntar formato resgistro cuenta bancaria</label>
-              <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
+              <label class="block text-gray-800 font-bold mb-2" for="documento">
+                Adjuntar formato resgistro cuenta bancaria
+              </label>
+              <input
+                id="documento"
+                name="documento"
+                type="file"
+                class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
                                                                         focus:border-indigo-300 focus:ring focus:ring-indigo-200 
                                                                         focus:ring-opacity-50"
-              /> 
+              />
               <button
                 type="submit"
                 className="w-full py-2 px-4 bg-[#1F6768] hover:bg-[#EE2737] text-white rounded-md font-semibold focus:outline-none"
