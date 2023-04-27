@@ -1,7 +1,9 @@
 import { contextTeacher } from "../context/TeacherContext";
 import { useContext } from "react";
-import { useEffect } from "react";
-import Footer from "../components/Footer";
+import { useEffect } from "react"; 
+import { useState } from 'react';
+import Footer from "../components/Footer"; 
+import PhotoUpload from "../components/PhotoUpload";
 import axios from "axios";
 import ComplexNavbar from '../components/NavBar2'
 export default function Profile() {
@@ -24,12 +26,9 @@ export default function Profile() {
       <ComplexNavbar></ComplexNavbar>
       <div class="max-w-2xl mx-auto px-4 py-8">
         <div class="bg-white rounded-lg shadow-lg">
-          <div class="flex items-center justify-center bg-[#1F6768] rounded-t-lg px-4 py-8">
-            <img
-              class="w-32 h-32 rounded-full border-4 border-white"
-              src="https://via.placeholder.com/150"
-              alt="Foto de Perfil"
-            />
+          <div class="flex items-center justify-center bg-[#1F6768] rounded-t-lg px-4 py-8"> 
+          
+          <PhotoUpload></PhotoUpload> 
           </div>
           <div class="px-6 py-4">
             <h2 class="text-2xl font-bold text-gray-800">Perfil del docente</h2>
@@ -125,18 +124,13 @@ export default function Profile() {
               <input id="documento" name="documento" type="file" class="form-input py-2 px-3 text-[#000000] block w-full rounded-md border-gray-300 shadow-sm 
                                                                         focus:border-indigo-300 focus:ring focus:ring-indigo-200 
                                                                         focus:ring-opacity-50"
-              />
+              /> 
               <button
                 type="submit"
                 className="w-full py-2 px-4 bg-[#1F6768] hover:bg-[#EE2737] text-white rounded-md font-semibold focus:outline-none"
               >
                 Actualizar
               </button>
-              <label for="photo-upload" class="relative cursor-pointer bg-gray-300 rounded-md font-medium text-white hover:bg-gray-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                <span>Adjuntar foto</span>
-                <input id="photo-upload" name="photo-upload" type="file" class="sr-only" />
-              </label>
-              <div class="mt-2" id="photo-preview"></div>
             </form>
           </div>
         </div>
