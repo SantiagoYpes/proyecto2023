@@ -16,7 +16,7 @@ export default function Guide() {
           Gestión de Docentes
         </Typography>
       </center>
-      <TableTeacher></TableTeacher>
+      <TableTeacher></TableTeacher> 
       <Footer/>
     </div>
   );
