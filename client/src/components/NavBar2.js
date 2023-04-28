@@ -58,7 +58,7 @@ export default function Example() {
           className="bg-red-500 hidden lg:inline-block"
           onClick={async () => {
             const response = await axios.post("/api/logout").finally(() => {
-              router.push("/login");
+              router.push("/");
             });
           }}
         >
