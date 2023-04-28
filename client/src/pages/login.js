@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { contextTeacher } from "@/context/TeacherContext";
 
 export default function LogIn() {
-  const { active, setActive, setContract, contract } = useContext(contextTeacher);
+  const { active, setActive } = useContext(contextTeacher || {});
   const [status, setStatus] = useState([]);
   const router = useRouter();
   const [postForm, setDatosFormulario] = useState({

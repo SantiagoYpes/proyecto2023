@@ -8,10 +8,18 @@ export async function middleware(request) {
   //   return NextResponse.redirect(new URL("/HomePageAdmin", request.url));
   // }
 
-  if (jwt === undefined) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
+  // if (jwt === undefined && !request.nextUrl.pathname.includes("/login")) {
+  //   console.log("Validation1");
+  //   return NextResponse.redirect(new URL("/login", request.url));
+  // }
   try {
+    if (request.nextUrl.pathname.includes("/login") && jwt) {
+      console.log("Validation2");
+      return NextResponse.redirect(new URL("/HomePage", request.url));
+    }
+    if(jwt === undefined && request.nextUrl.pathname.includes("/login")){
+      return NextResponse.next();
+    }
     const { value } = jwt;
     const { payload } = await jwtVerify(
       value,
@@ -27,5 +35,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/HomePageAdmin", "/profileteacher", "/HomePage"],
+  matcher: ["/HomePageAdmin", "/profileteacher", "/HomePage", "/login"],
 };
