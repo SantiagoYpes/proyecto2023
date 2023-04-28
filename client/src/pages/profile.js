@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
 import axios from "axios";
+import TableContract from "../components/TableContract";
 export default function Profile() {
   const { teacher, setTeacher } = useContext(contextTeacher);
   console.log(teacher);
@@ -17,6 +18,10 @@ export default function Profile() {
 
     fetchData();
   }, []);
+
+  const updateTeacher = () => {
+    alert("Actualizar Profesor");
+  };
   return (
     <div className="min-h-screen  justify-center bg-gray-100">
       <div class="max-w-2xl mx-auto px-4 py-8">
@@ -104,7 +109,6 @@ export default function Profile() {
                 />
               </div>
               <button
-                type="submit"
                 className="w-full py-2 px-4 bg-[#1F6768] hover:bg-[#EE2737] text-white rounded-md font-semibold focus:outline-none"
               >
                 Actualizar
@@ -112,8 +116,11 @@ export default function Profile() {
             </form>
           </div>
         </div>
-      </div> 
-      <Footer/>
+      </div>
+      <div class="max-w-1xl mx-auto px-4 py-8">
+        <TableContract />
+      </div>
+      <Footer />
     </div>
   );
 }

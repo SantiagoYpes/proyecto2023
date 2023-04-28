@@ -5,6 +5,7 @@ export default function LoginService(req, res) {
   let dataFromDB = {
     id: "",
     type: "",
+    ced:"",
   };
 
   dataFromDB = req.body.data;
@@ -13,7 +14,8 @@ export default function LoginService(req, res) {
       {
         exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30,
         type: dataFromDB.type,
-        id: dataFromDB.id
+        id: dataFromDB.id,
+        ced: dataFromDB.ced
       },
       "secret"
     );

@@ -9,7 +9,7 @@ export const loginUser = async (req, res) => {
     .then((users) => {// Maneja los usuarios encontrados
         const found = users.find(user => user.password == pass)
       
-          const response = {id:found._id, type:found.type}
+          const response = {id:found._id, type:found.type, ced:found.ced}
           console.log("encontrado");
           res.send(response)
 
