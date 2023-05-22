@@ -2,7 +2,8 @@ import { contextTeacher } from "../context/TeacherContext";
 import { useContext } from "react";
 import { useEffect } from "react"; 
 import Footer from "../components/Footer";
-import axios from "axios";
+import axios from "axios"; 
+import PhotoUpload from "../components/PhotoUpload";
 import ComplexNavbar from '../components/NavBar'
 export default function Profile() {
   const { active, setActive } = useContext(contextTeacher);
@@ -23,12 +24,8 @@ export default function Profile() {
       <ComplexNavbar></ComplexNavbar>
       <div className="max-w-2xl mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-lg">
-          <div class="flex items-center justify-center bg-[#EE2737] rounded-t-lg px-4 py-8">
-            <img
-              class="w-32 h-32 rounded-full border-4 border-white"
-              src="https://via.placeholder.com/150"
-              alt="Foto de Perfil"
-            />
+          <div class="flex items-center justify-center bg-[#1F6768] rounded-t-lg px-4 py-8"> 
+            <PhotoUpload></PhotoUpload>
           </div>
           <div class="px-6 py-4">
             <h2 class="text-2xl font-bold text-gray-800">Perfil del administrador</h2>
