@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function ServiceCardComponent(props) {
   const { title, shortDesc, icon, rout } = props;
   return (
-    <div className="max-w-sm p-6 bg-white rounded-lg shadow-2xl dark:bg-white-800 dark:border-gray-700 mt-10 text-center">
+    <div className="max-w-sm p-6 bg-white rounded-lg shadow-2xl dark:bg-white-800 dark:border-gray-700 text-center">
       <svg
         className={styles.svg}
         fill="none"
