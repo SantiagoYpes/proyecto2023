@@ -7,7 +7,7 @@ import { Typography } from "@material-tailwind/react";
 function TableContract() {
   const { contract } = useContext(contextTeacher);
   const [contracts, setContracts] = useState([]);
-  const [checked, setChecked] = useState(false);
+  
   const url = "http://localhost:4000/logcontract/" + contract;
   useEffect(() => {
     const fetchData = async () => {

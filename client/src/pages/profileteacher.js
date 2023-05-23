@@ -8,14 +8,15 @@ import ComplexNavbar from "../components/NavBar2";
 export default function Profile() {
   const [active, setActive] = useState([]);
   const user = JSON.parse(localStorage.getItem("items"));
-  const fetchData = async () => {
-    const url = "http://localhost:4000/teacher/" + user.id;
-    const result = await axios.get(url);
-    setActive(result.data);
-    console.log(result.data);
-  };
+  const url = "http://localhost:4000/teacher/" + user.id;
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get(url);
+      setActive(result.data);
+    };
+    fetchData();
+  }, []);
 
-  fetchData();
   return (
     <div className="min-h-screen  justify-center bg-gray-100">
       <ComplexNavbar></ComplexNavbar>

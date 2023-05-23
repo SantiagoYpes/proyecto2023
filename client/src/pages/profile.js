@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import ComplexNavbar from "@/components/NavBar";
 import  AlertAdd  from "../components/AlertAdd";
-import TableContract from "../components/tablecontract";
+import TableContract from "../components/TableContract";
 import { Toaster, toast } from "react-hot-toast";
 export default function Profile() {
   const { teacher, setTeacher } = useContext(contextTeacher);
@@ -22,18 +22,17 @@ export default function Profile() {
 
     fetchData();
   }, []);
-  const handleAdd = (id_teacher) => {
+  const handleAdd = (id_teacher, teacher_type) => {
     toast.loading((t) => (
       <AlertAdd
         t={t}
         id_teacher={id_teacher}
+        user ={'administrador'}
+        signed={'false'}
       />
     ));
   };
-
-  const updateTeacher = () => {
-    alert("Actualizar Profesor");
-  };
+  
   return (
     <div className="min-h-screen  justify-center bg-gray-100">
       <ComplexNavbar />
@@ -131,7 +130,7 @@ export default function Profile() {
       <center>
         <button
           class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded"
-          onClick={() => handleAdd(teacher.ced)}
+          onClick={() => handleAdd(teacher.ced, teacher.type)}
         >
           Crear Contrato
         </button>

@@ -15,6 +15,10 @@ const userSchema = new Schema(
     public_id: {
       type: String,
       require: true
+    },
+    signed:{
+      type:String,
+      require:true
     }
   },
   {

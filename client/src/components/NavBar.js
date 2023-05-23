@@ -54,6 +54,11 @@ export default function Example() {
           variant="gradient"
           size="sm"
           className="bg-red-500 hidden lg:inline-block"
+          onClick={async () => {
+            localStorage.clear();
+
+            router.push("/");
+          }}
         >
           <span className="bg-red">Cerrar Sesión</span>
         </Button>

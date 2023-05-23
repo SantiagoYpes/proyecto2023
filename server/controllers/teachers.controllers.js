@@ -154,9 +154,15 @@ export const newContract = async (req, res) => {
 
       //const real_public_id = await downloadPDF(url)
       try {
-        const contract = new Contract({ ced, url, public_id });
+        const contract = new Contract({ ced, url, public_id,signed });
         await contract.save();
-        const logcontract = new LogContract({ced, name, description, user, signed});
+        const logcontract = new LogContract({
+          ced,
+          name,
+          description,
+          user,
+          signed,
+        });
         await logcontract.save();
 
         res.send(contract._id);
@@ -171,3 +177,4 @@ export const newContract = async (req, res) => {
     res.status(400).send(error);
   }
 };
+

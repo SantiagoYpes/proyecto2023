@@ -60,7 +60,7 @@ export default function Example() {
             localStorage.removeItem("item");
             router.push("/HomePage");
             //const response = await axios.post("/api/logout").finally(() => {
-              //router.push("/");
+            //router.push("/");
             //});
           }}
         >
@@ -107,7 +107,17 @@ export default function Example() {
       <MobileNav open={openNav}>
         <div className="container mx-auto">
           {navList}
-          <Button variant="gradient" size="sm" fullWidth className="mb-2">
+          <Button
+            onClick={async () => {
+              localStorage.clear();
+
+              router.push("/");
+            }}
+            variant="gradient"
+            size="sm"
+            fullWidth
+            className="mb-2"
+          >
             <span>Cerrar Sesión</span>
           </Button>
         </div>
