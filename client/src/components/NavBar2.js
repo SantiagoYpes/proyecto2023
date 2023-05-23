@@ -58,7 +58,7 @@ export default function Example() {
           className="bg-red-500 hidden lg:inline-block"
           onClick={async () => {
             localStorage.removeItem("item");
-            router.push("/HomePage");
+            router.push("/");
             //const response = await axios.post("/api/logout").finally(() => {
             //router.push("/");
             //});

@@ -1,6 +1,6 @@
 import React from "react";
 import { toast } from "react-hot-toast";
-import ComplexNavbar from "@/components/NavBar";
+import ComplexNavbar from "@/components/NavBar2";
 import { Typography } from "@material-tailwind/react";
 import Footer from "../components/Footer";
 import { useEffect, useState, useContext } from "react";
@@ -59,7 +59,7 @@ export default function TableContractUser() {
                     <h2 class="text-xl font-semibold">Teléfono</h2>
                     <p class="mb-5 mt-3">¡Hablanos a nuestra línea única de atención telefónica para brindarte el mejor apoyo!</p>
                     <a href="tel:+573245301146" class="bg-[#EE2737] hover:bg-[#1F6768] text-white font-bold py-2 px-4 rounded">
-                        Ir al correo
+                        Llamar
                     </a>
                 </div>
             </div>

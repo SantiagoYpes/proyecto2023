@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import ComplexNavbar from "../components/NavBar";
 import { useRouter } from "next/router";
+import PhotoUpload from "../components/PhotoUpload";
 export default function Profile() {
   const router = useRouter()
   const [active, setActive] = useState({});
