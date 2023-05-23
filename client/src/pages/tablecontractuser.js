@@ -33,7 +33,7 @@ export default function TableContractUser() {
 
   const [checked, setChecked] = useState(false);
 
-  const handleAdd = (id_teacher, id_contract) => {
+  const handleAdd = (id_teacher, id_contract) => { 
     toast.loading((t) => (
       <AlertAdd
         t={t}
@@ -56,7 +56,7 @@ export default function TableContractUser() {
         </Typography>
       </center>
 
-      <div class="text-s text-gray-900">Contratos del Docente</div>
+      <div class="text-s text-gray-900 ml-6">Contratos del Docente</div>
       <table class="min-w-full divide-y divide-gray-200 text-[#000000]">
         <thead class="bg-gray-50">
           <tr>
