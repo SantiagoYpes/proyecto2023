@@ -31,37 +31,36 @@ export default function TableContractUser() {
     return (
         <div className="min-h-screen items-center justify-center bg-gray-100 text-[#000000]">
             <ComplexNavbar />
-            <br></br> 
-            
-            <div class="flex">
-                <div class="max-w-xs rounded overflow-hidden shadow-lg m-4 border border-gray-300 hover:border-blue-500">
-                    <img class="w-full" src="imagen1.jpg" alt="Imagen 1"/>
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">Tarjeta 1</div>
-                            <p class="text-gray-700 text-base">
-                                Contenido de la tarjeta 1.
-                            </p>
-                        </div>
+            <br></br>
+            <center>
+                <Typography
+                    variant="h2"
+                    className="text-black-500 p-7 text-4xl  "
+                >
+                    ¡TENEMOS VARIAS MANERAS DE DARTE SOPORTE!
+                </Typography>
+            </center>
+            <div class="flex space-x-1 m-6">
+                <div class="bg-white rounded-lg text-center shadow-lg p-6 border hover:scale-105 hover:border-[#1F6768]">
+                    <h2 class="text-xl font-semibold">WhatsApp</h2>
+                    <p class="mb-5 mt-3">¡Hablanos a nuestra línea única de atención de WhatsApp para brindarte el mejor apoyo!</p>
+                    <a href="https://api.whatsapp.com/send/?phone=3245301146" class="bg-[#EE2737] hover:bg-[#1F6768] text-white font-bold py-2 px-4 rounded">
+                        Ir al chat
+                    </a>
                 </div>
-
-                <div class="max-w-xs rounded overflow-hidden shadow-lg m-4 border border-gray-300 hover:border-blue-500">
-                    <img class="w-full" src="imagen2.jpg" alt="Imagen 2"/>
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">Tarjeta 2</div>
-                            <p class="text-gray-700 text-base">
-                                Contenido de la tarjeta 2.
-                            </p>
-                        </div>
+                <div class="bg-white rounded-lg text-center shadow-lg p-6 border hover:scale-105 hover:border-[#1F6768]">
+                    <h2 class="text-xl font-semibold">Correo electrónico</h2>
+                    <p class="mb-5 mt-3">¡Hablanos a nuestra línea única de atención de correo electrónico para brindarte el mejor apoyo!</p>
+                    <a href="mailto:smontoya660@soyudemedellin.edu.co" class="bg-[#EE2737] hover:bg-[#1F6768] text-white font-bold py-2 px-4 rounded">
+                        Ir al correo
+                    </a>
                 </div>
-
-                <div class="max-w-xs rounded overflow-hidden shadow-lg m-4 border border-gray-300 hover:border-blue-500">
-                    <img class="w-full" src="imagen3.jpg" alt="Imagen 3"/>
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">Tarjeta 3</div>
-                            <p class="text-gray-700 text-base">
-                                Contenido de la tarjeta 3.
-                            </p>
-                        </div>
+                <div class="mr-9 bg-white rounded-lg text-center shadow-lg p-6 border hover:scale-105 hover:border-[#1F6768]">
+                    <h2 class="text-xl font-semibold">Teléfono</h2>
+                    <p class="mb-5 mt-3">¡Hablanos a nuestra línea única de atención telefónica para brindarte el mejor apoyo!</p>
+                    <a href="tel:+573245301146" class="bg-[#EE2737] hover:bg-[#1F6768] text-white font-bold py-2 px-4 rounded">
+                        Ir al correo
+                    </a>
                 </div>
             </div>
             <Footer />
