@@ -74,7 +74,8 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen justify-center bg-gray-100">
-      <ComplexNavbar />
+      <ComplexNavbar /> 
+      <br></br>
       <div className={styles.container}>
         <div className={styles.cards}>
           <ServiceCardComponent

@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { contextTeacher } from "../context/TeacherContext";
 import ComplexNavbar from "@/components/NavBar";
+import Footer from "../components/Footer";
 import { Typography } from "@material-tailwind/react";
 function TableContract() {
   const { contract } = useContext(contextTeacher);
@@ -101,6 +102,7 @@ function TableContract() {
             ))}
           </tbody>
         </table>
+        <Footer/>
       </div>
     );
   }

@@ -1,15 +1,34 @@
 import { contextTeacher } from "../context/TeacherContext";
-import { useContext } from "react";
-import { useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import axios from "axios";
 import ComplexNavbar from "@/components/NavBar";
 import  AlertAdd  from "../components/AlertAdd";
 import TableContract from "../components/TableContract";
 import { Toaster, toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 export default function Profile() {
+  const router= useRouter()
+  const [valuehour, setValuehour] = useState([]);
+  const handleValuehourChange = (event) => {
+    setValuehour(event.target.value);
+  };
   const { teacher, setTeacher } = useContext(contextTeacher);
-  console.log(teacher);
+
+  const handleSubmit = async (event) => {
+    const url = "http://localhost:4000/updateUser/"+teacher._id
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('valuehour', valuehour);
+    try {
+      const response = await axios.post(url, formData);
+
+      router.push("/guide")
+      // Manejar la respuesta de la solicitud POST...
+    } catch (error) {
+      console.error('Error al enviar la solicitud POST:', error);
+    }
+  };
 
 
   const url = "http://localhost:4000/teacher/" + teacher;
@@ -17,12 +36,12 @@ export default function Profile() {
     const fetchData = async () => {
       const result = await axios.get(url);
       setTeacher(result.data);
-      console.log(result);
+      setValuehour(result.data.valuehour)
     };
 
     fetchData();
   }, []);
-  const handleAdd = (id_teacher, teacher_type) => {
+  const handleAdd = (id_teacher) => {
     toast.loading((t) => (
       <AlertAdd
         t={t}
@@ -50,7 +69,7 @@ export default function Profile() {
             <p class="text-gray-600"></p>
           </div>
           <div class="px-6 py-4">
-            <form class="space-y-4">
+            <form onSubmit={handleSubmit} class="space-y-4">
               <div>
                 <label for="nombre" class="block text-gray-800 font-bold mb-2">
                   Nombre
@@ -114,10 +133,11 @@ export default function Profile() {
                 <input
                   type="text"
                   inputmode="numeric"
+                  onChange={handleValuehourChange}
                   pattern="[0-9]*"
                   id="phone"
                   class="w-full px-3 py-2 pl-10 pr-4 border border-gray-300 rounded-md focus:outline-none focus:border-[#1F6768] text-[#000000]"
-                  value={teacher.valuehour}
+                  value={valuehour}
                 />
               </div>
               <button className="w-full py-2 px-4 bg-[#1F6768] hover:bg-[#EE2737] text-white rounded-md font-semibold focus:outline-none">
@@ -130,7 +150,7 @@ export default function Profile() {
       <center>
         <button
           class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded"
-          onClick={() => handleAdd(teacher.ced, teacher.type)}
+          onClick={() => handleAdd(teacher.ced)}
         >
           Crear Contrato
         </button>

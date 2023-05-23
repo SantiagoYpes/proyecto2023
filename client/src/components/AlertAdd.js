@@ -1,9 +1,10 @@
 import React from "react";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
-import AddFilesButton from "./AddFilesButton";
+import { useRouter } from "next/router";
 import axios from "axios";
 function AlertAdd({ t , id_teacher, signed, user}) {
+  const router = useRouter()
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
@@ -37,6 +38,7 @@ function AlertAdd({ t , id_teacher, signed, user}) {
         },
       });
       toast.dismiss(t._id)
+      router.push("/guide")
 
       // Manejar la respuesta de la solicitud POST...
     } catch (error) {

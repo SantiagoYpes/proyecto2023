@@ -34,7 +34,8 @@ export default function SingUp() {
       .post(url,postForm)
       .then((response) => {
         const data = response.data
-        handleAlert("Usuario Creado con id: ")
+        handleAlert("Usuario Creado, por favor inicia sesión")
+        router.push("/login")
       })
       .catch((error) => {
          handleAlert("Ocurrió un error al registrar usuario, por favor verifica tus datos")

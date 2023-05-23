@@ -7,6 +7,9 @@ import ComplexNavbar from "../components/NavBar";
 import { useRouter } from "next/router";
 import PhotoUpload from "../components/PhotoUpload";
 export default function Profile() {
+  const [name, setName] = useState([]);
+  const [lastname, setLastName] = useState([]);
+
   const router = useRouter()
   const [active, setActive] = useState({});
   const user = JSON.parse(localStorage.getItem("items"));
@@ -16,7 +19,8 @@ export default function Profile() {
     const fetchData = async () => {
       const result = await axios.get(url);
       setActive(result.data);
-      console.log(active._id);
+      setName(result.data.name)
+      setLastName(result.data.lastname)
     };
     fetchData();
   }, []);
@@ -48,8 +52,7 @@ export default function Profile() {
 
   
 
-  const [name, setName] = useState(active.name);
-  const [lastname, setLastName] = useState(active.lastname);
+  
   return (
     <div className="min-h-screen  justify-center bg-gray-100">
       <ComplexNavbar></ComplexNavbar>
@@ -75,7 +78,7 @@ export default function Profile() {
                   onChange={handleNameChange} 
                   id="firstName"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none hover:border-[#1F6768] text-[#000000]"
-                  value={active.name}
+                  value={name}
                 />
               </div>
               <div>
@@ -87,7 +90,7 @@ export default function Profile() {
                   onChange={handleLastNameChange} 
                   id="firstName"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none hover:border-[#1F6768] text-[#000000]"
-                  value={active.lastname}
+                  value={lastname}
                 />
               </div>
               <div>
