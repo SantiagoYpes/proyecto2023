@@ -59,7 +59,7 @@ export const newLogContract = async (req, res) => {
       const logcontract = new LogContract(req.body);
       await logcontract.save();
       console.log("Log de contrato Creado");
-      res.send(logcontract._id);
+      res.status(201).send(logcontract._id);
     }
   } catch (error) {
     res.status(400).send(error);
@@ -74,7 +74,7 @@ export const newTeacher = async (req, res) => {
       const user = new User(req.body);
       await user.save();
       console.log("Profesor Creado");
-      res.send(user._id);
+      res.status(201).send(user._id);
     }
   } catch (error) {
     res.status(400).send(error);
@@ -114,7 +114,9 @@ export const teacherId = async (req, res) => {
   try {
     const { id } = req.params;
     const teacher = await User.findById(id);
-    res.json(teacher);
+    const{_id,ced,type,cell,email,name,lastname} =teacher
+    const response={_id,ced,type,cell,email,name,lastname}
+    res.json(response);
   } catch (error) {
     res.status(400).send(error);
   }
