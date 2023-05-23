@@ -31,16 +31,37 @@ export default function TableContractUser() {
     return (
         <div className="min-h-screen items-center justify-center bg-gray-100 text-[#000000]">
             <ComplexNavbar />
-            <br></br>
+            <br></br> 
+            
             <div class="flex">
-                <div class="flex-shrink-0 border rounded-lg overflow-hidden hover:bg-gray-100">
-                    
+                <div class="max-w-xs rounded overflow-hidden shadow-lg m-4 border border-gray-300 hover:border-blue-500">
+                    <img class="w-full" src="imagen1.jpg" alt="Imagen 1"/>
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Tarjeta 1</div>
+                            <p class="text-gray-700 text-base">
+                                Contenido de la tarjeta 1.
+                            </p>
+                        </div>
                 </div>
-                <div class="flex-shrink-0 border rounded-lg overflow-hidden hover:bg-gray-100 ml-4">
 
+                <div class="max-w-xs rounded overflow-hidden shadow-lg m-4 border border-gray-300 hover:border-blue-500">
+                    <img class="w-full" src="imagen2.jpg" alt="Imagen 2"/>
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Tarjeta 2</div>
+                            <p class="text-gray-700 text-base">
+                                Contenido de la tarjeta 2.
+                            </p>
+                        </div>
                 </div>
-                <div class="flex-shrink-0 border rounded-lg overflow-hidden hover:bg-gray-100 ml-4">
 
+                <div class="max-w-xs rounded overflow-hidden shadow-lg m-4 border border-gray-300 hover:border-blue-500">
+                    <img class="w-full" src="imagen3.jpg" alt="Imagen 3"/>
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Tarjeta 3</div>
+                            <p class="text-gray-700 text-base">
+                                Contenido de la tarjeta 3.
+                            </p>
+                        </div>
                 </div>
             </div>
             <Footer />
