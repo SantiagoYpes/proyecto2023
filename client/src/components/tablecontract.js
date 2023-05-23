@@ -1,12 +1,12 @@
 import React from "react";
-import { toast } from "react-hot-toast";
-
 import { useEffect, useState, useContext } from "react";
-
 import axios from "axios";
 import { contextTeacher } from "../context/TeacherContext";
+import AlertDeleteContract from "./AlertDeleteContrac";
+import { Toaster, toast } from "react-hot-toast";
+
 function TableContract() {
-  const { contract, setContract } = useContext(contextTeacher);
+  const { contract } = useContext(contextTeacher);
   const [contracts, setContracts] = useState([]);
   const url = "http://localhost:4000/contract/" + contract;
   useEffect(() => {
@@ -19,11 +19,10 @@ function TableContract() {
     fetchData();
   }, []);
 
-  const [checked, setChecked] = useState(false);
-
-  const handleChange = () => {
-    setChecked(!checked);
+  const handleDelete = (id) => {
+    toast((t) => <AlertDeleteContract t={t} id_contract={id} />);
   };
+
   if (contracts.length != 0) {
     return (
       <div>
@@ -53,12 +52,6 @@ function TableContract() {
                 scope="col"
                 class="px-6 py-3 font-bold text-left text-s uppercase tracking-wider"
               >
-                Estado
-              </th>
-              <th
-                scope="col"
-                class="px-6 py-3 font-bold text-left text-s uppercase tracking-wider"
-              >
                 Acciones
               </th>
             </tr>
@@ -75,29 +68,11 @@ function TableContract() {
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-s text-gray-900">{contract.updatedAt}</div>
                 </td>
-                <td>
-                  <label className="flex items-center cursor-pointer">
-                    <div className="relative">
-                      <input
-                        type="checkbox"
-                        className="sr-only"
-                        checked={checked}
-                      />
-                      <br></br>
-                      <div className="w-11 h-6 bg-gray-400 rounded-full shadow-inner"></div>
-                      <div
-                        className={`absolute left-1 top-7 transition ${
-                          checked ? "translate-x-5 bg-green-400" : "bg-white"
-                        } w-4 h-4 rounded-full shadow`}
-                      ></div>
-                    </div>
-                    <div className="ml-2 text-gray-700 font-medium">
-                      Firmado
-                    </div>
-                  </label>
-                </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
+                  <button
+                    onClick={() => handleDelete(contract._id)}
+                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded"
+                  >
                     Borrar
                   </button>
                 </td>
@@ -105,6 +80,7 @@ function TableContract() {
             ))}
           </tbody>
         </table>
+        <Toaster />
       </div>
     );
   }

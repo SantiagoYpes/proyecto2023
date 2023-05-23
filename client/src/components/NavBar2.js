@@ -57,9 +57,11 @@ export default function Example() {
           size="sm"
           className="bg-red-500 hidden lg:inline-block"
           onClick={async () => {
-            const response = await axios.post("/api/logout").finally(() => {
-              router.push("/");
-            });
+            localStorage.removeItem("item");
+            router.push("/HomePage");
+            //const response = await axios.post("/api/logout").finally(() => {
+              //router.push("/");
+            //});
           }}
         >
           <span className="bg-red">Cerrar Sesión</span>

@@ -3,10 +3,14 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
 import axios from "axios";
-import TableContract from "../components/TableContract";
+import ComplexNavbar from "@/components/NavBar";
+import  AlertAdd  from "../components/AlertAdd";
+import TableContract from "../components/tablecontract";
+import { Toaster, toast } from "react-hot-toast";
 export default function Profile() {
   const { teacher, setTeacher } = useContext(contextTeacher);
   console.log(teacher);
+
 
   const url = "http://localhost:4000/teacher/" + teacher;
   useEffect(() => {
@@ -18,12 +22,21 @@ export default function Profile() {
 
     fetchData();
   }, []);
+  const handleAdd = (id_teacher) => {
+    toast.loading((t) => (
+      <AlertAdd
+        t={t}
+        id_teacher={id_teacher}
+      />
+    ));
+  };
 
   const updateTeacher = () => {
     alert("Actualizar Profesor");
   };
   return (
     <div className="min-h-screen  justify-center bg-gray-100">
+      <ComplexNavbar />
       <div class="max-w-2xl mx-auto px-4 py-8">
         <div class="bg-white rounded-lg shadow-lg">
           <div class="flex items-center justify-center bg-[#1F6768] rounded-t-lg px-4 py-8">
@@ -108,18 +121,25 @@ export default function Profile() {
                   value={teacher.valuehour}
                 />
               </div>
-              <button
-                className="w-full py-2 px-4 bg-[#1F6768] hover:bg-[#EE2737] text-white rounded-md font-semibold focus:outline-none"
-              >
+              <button className="w-full py-2 px-4 bg-[#1F6768] hover:bg-[#EE2737] text-white rounded-md font-semibold focus:outline-none">
                 Actualizar
               </button>
             </form>
           </div>
         </div>
       </div>
+      <center>
+        <button
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded"
+          onClick={() => handleAdd(teacher.ced)}
+        >
+          Crear Contrato
+        </button>
+      </center>
       <div class="max-w-1xl mx-auto px-4 py-8">
         <TableContract />
       </div>
+      <Toaster/>
       <Footer />
     </div>
   );

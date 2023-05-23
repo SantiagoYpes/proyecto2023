@@ -41,7 +41,6 @@ function AlertDeleteTeacher({ t, id_teacher }) {
     <div>
       <p>
         ¿Quieres eliminar a este profesor?
-        {id_teacher}
       </p>
       <div clasName="flex">
         <button onClick={deleteTeacher} className="bg-[#1F6768] hover:bg-[#EE2737] text-white font-bold py-2 px-4 rounded mx-2">

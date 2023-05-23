@@ -1,26 +1,21 @@
 import { contextTeacher } from "../context/TeacherContext";
-import { useContext } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
 import PhotoUpload from "../components/PhotoUpload";
 import axios from "axios";
 import ComplexNavbar from "../components/NavBar2";
 export default function Profile() {
-  const { active, setActive } = useContext(contextTeacher);
+  const [active, setActive] = useState([]);
+  const user = JSON.parse(localStorage.getItem("items"));
+  const fetchData = async () => {
+    const url = "http://localhost:4000/teacher/" + user.id;
+    const result = await axios.get(url);
+    setActive(result.data);
+    console.log(result.data);
+  };
 
-  useEffect(() => {
-
-    const fetchData = async () => {
-      const validToken = await axios.get("/api/vtoken");
-      setActive(validToken.data.id);
-      const url = "http://localhost:4000/teacher/" + active;
-      const result = await axios.get(url);
-      setActive(result.data);
-      console.log(result);
-    };
-
-    fetchData();
-  }, []);
+  fetchData();
   return (
     <div className="min-h-screen  justify-center bg-gray-100">
       <ComplexNavbar></ComplexNavbar>

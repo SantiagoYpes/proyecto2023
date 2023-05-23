@@ -1,23 +1,21 @@
 import { contextTeacher } from "../context/TeacherContext";
-import { useContext } from "react";
-import { useEffect } from "react"; 
+import { useState } from "react";
+import { useEffect } from "react";
 import Footer from "../components/Footer";
 import axios from "axios";
-import ComplexNavbar from '../components/NavBar'
+import ComplexNavbar from "../components/NavBar";
 export default function Profile() {
-  const { active, setActive } = useContext(contextTeacher);
-  console.log(active);
+  const [active, setActive] = useState([]);
+  const user = JSON.parse(localStorage.getItem("items"));
+  const url = "http://localhost:4000/teacher/" + user.id;
 
-  const url = "http://localhost:4000/teacher/" + active;
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get(url);
-      setActive(result.data);
-      console.log(result);
-    };
+  const fetchData = async () => {
+    const result = await axios.get(url);
+    setActive(result.data);
+    console.log(active);
+  };
 
-    fetchData();
-  }, []);
+  fetchData();
   return (
     <div className="min-h-screen  justify-center bg-gray-100">
       <ComplexNavbar></ComplexNavbar>
@@ -31,7 +29,9 @@ export default function Profile() {
             />
           </div>
           <div class="px-6 py-4">
-            <h2 class="text-2xl font-bold text-gray-800">Perfil del administrador</h2>
+            <h2 class="text-2xl font-bold text-gray-800">
+              Perfil del administrador
+            </h2>
             <p class="text-gray-600"></p>
           </div>
           <div class="px-6 py-4">
@@ -80,17 +80,11 @@ export default function Profile() {
                   value={active.email}
                 />
               </div>
-              <button
-                type="submit"
-                className="w-full py-2 px-4 bg-[#EE2737] hover:bg-[#1F6768]  text-white rounded-md font-semibold focus:outline-none"
-              > 
-                Actualizar
-              </button>
-            </form>  
+            </form>
           </div>
         </div>
-      </div> 
-      <Footer/>
+      </div>
+      <Footer />
     </div>
   );
 }
