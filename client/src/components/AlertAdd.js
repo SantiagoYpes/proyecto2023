@@ -59,9 +59,9 @@ function AlertAdd({ t , id_teacher, signed, user}) {
   return (
     <div>
       <center>
-        <h1>Crear un nuevo Contrato</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-6">
+        <h1 className="">Crear un nuevo Contrato</h1>
+        <form className="" onSubmit={handleSubmit}>
+          <div className="mb-4">
             <label htmlFor="text" className="block mb-1 font-medium">
               Nombre
             </label>
@@ -76,8 +76,8 @@ function AlertAdd({ t , id_teacher, signed, user}) {
               placeholder="Ingresa un nombre"
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="text" className="block mb-1 font-medium">
+          <div className="mb-3">
+            <label htmlFor="text" className=" block mb-1 font-medium">
               Descripción
             </label>
             <input
@@ -87,25 +87,25 @@ function AlertAdd({ t , id_teacher, signed, user}) {
               id="description"
               value={description} 
               onChange={handleDescriptionChange} 
-              className=" px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#EE2737]"
+              className=" px-3 py-2  border border-gray-300 mt5 rounded-md focus:outline-none focus:border-[#EE2737]"
               placeholder="Ingresa una descripción"
             />
-            <input type="file"  onChange={handleFileChange} />
+            <input type="file" className="mt-3 text-xs"  onChange={handleFileChange} />
           </div>
-          <td className="p-2 border border-gray-300 hidden lg:table-cell flex space-x-2">
+          
             <button
               type="submit"
-              className="py-2 px-4 bg-[#EE2737] text-white rounded-md font-semibold focus:outline-none"
+              className="py-2 px-4 bg-[#EE2737] mr-2 text-white rounded-md font-semibold focus:outline-none"
             >
               Crear
             </button>
             <button
-              className="bg-[#1F6768]  text-white font-bold py-2 px-4 rounded"
+              className="bg-[#1F6768] text-white font-bold py-2 px-4 rounded"
               onClick={() => toast.dismiss(t.id)}
             >
               Cancelar
             </button>
-          </td>
+          
         </form>
       </center>
     </div>
