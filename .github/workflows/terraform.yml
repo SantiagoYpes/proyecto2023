@@ -82,7 +82,6 @@ jobs:
      - name: Initialize Terraform
        run: |
          cd terraform/
-         terraform init -input=false  
-         terraform plan -input=false -no-color        
+   
 
  
