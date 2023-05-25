@@ -94,7 +94,7 @@ function AlertAdd({ t, id_teacher, user, id_contract }) {
               className=" px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#EE2737]"
               placeholder="Ingresa una descripción"
             />
-            <input type="file" onChange={handleFileChange} />
+            <input type="file" className="mt-3 text-xs" onChange={handleFileChange} />
           </div>
           <td>
             <div>Firmado</div>
