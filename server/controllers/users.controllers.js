@@ -1,8 +1,9 @@
 import User from "../models/User.js";
 import LogContract from "../models/LogContract.js";
 import Contract from "../models/Contract.js";
-import { downloadPDF, uploadContract } from "../libs/cloudinary.js";
+import { uploadContract } from "../libs/cloudinary.js";
 import fs from "fs-extra";
+import jwt from "jsonwebtoken";
 export const loginUser = async (req, res) => {
   console.log(req.body);
   const { email, pass } = req.body;
@@ -12,8 +13,9 @@ export const loginUser = async (req, res) => {
     .then((users) => {
       // Maneja los usuarios encontrados
       const found = users.find((user) => user.password == pass);
-
-      const response = { id: found._id, type: found.type, ced: found.ced };
+      const userT = found._id
+      const token = jwt.sign({id:userT}, 'secret')
+      const response = { id: found._id, type: found.type, ced: found.ced, token:token };
       console.log("encontrado");
       res.send(response);
     })

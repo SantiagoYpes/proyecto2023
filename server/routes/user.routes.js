@@ -7,3 +7,9 @@ router.post('/login', loginUser)
 router.post('/updateuser/:id', updateUser)
 router.post('/updatecontract/:id', updateContract)
 export default router
+
+
+function ensureToken(req, res, next){
+    const bearerHeader = req.headers['authorization']
+    console.log(bearerHeader);
+}
