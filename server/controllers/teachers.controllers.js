@@ -4,11 +4,12 @@ import Contract from "../models/Contract.js";
 import LogContract from "../models/LogContract.js";
 import jwt from "jsonwebtoken";
 import fs from "fs-extra";
+import bcrypt from 'bcryptjs'
 export const getTeachers = async (req, res) => {
   try {
     jwt.verify(req.token, "secret", async (err, data) => {
       if (err) {
-        res.status(403).send("Token Inválido");
+        res.status(401).send("Token Inválido");
       } else {
         const list = await User.find();
         let listTeachers = list
@@ -18,10 +19,14 @@ export const getTeachers = async (req, res) => {
           .map(function (teacher) {
             return teacher;
           });
+          listTeachers.forEach(function(objeto) {
+            delete objeto.propiedad;
+          });
         res.status(200).send(listTeachers);
       }
     });
   } catch (error) {
+    console.log(error);
     res.status(400).error(error);
   }
 };
@@ -30,7 +35,7 @@ export const getContracts = async (req, res) => {
   try {
     jwt.verify(req.token, "secret", async (err, data) => {
       if (err) {
-        res.status(403).send("Token Inválido");
+        res.status(401).send("Token Inválido");
       } else {
         const list = await Contract.find();
         let listContracts = list;
@@ -45,7 +50,7 @@ export const getContracts = async (req, res) => {
 export const getLogContract = async (req, res) => {
   jwt.verify(req.token, "secret", async (err, data) => {
     if (err) {
-      res.status(403).send("Token Inválido");
+      res.status(401).send("Token Inválido");
     } else {
       try {
         const { id } = req.params;
@@ -71,7 +76,7 @@ export const getLogContract = async (req, res) => {
 export const newLogContract = async (req, res) => {
   jwt.verify(req.token, "secret", async (err, data) => {
     if (err) {
-      res.status(403).send("Token Inválido");
+      res.status(401).send("Token Inválido");
     } else {
       try {
         if (req.body.ced === "") {
@@ -90,25 +95,22 @@ export const newLogContract = async (req, res) => {
   });
 };
 export const newTeacher = async (req, res) => {
-  jwt.verify(req.token, "secret", async (err, data) => {
-    if (err) {
-      res.status(403).send("Token Inválido");
-    } else {
-      if (req.body.ced === "") {
-        res.status(400).send("Formulario Inválido");
-      } else {
-        try {
-          console.log(req.body);
-          const user = new User(req.body);
-          await user.save();
-          console.log("Profesor Creado");
-          res.status(201).send(user._id);
-        } catch (error) {
-          res.status(400).send(error);
-        }
-      }
+  if (req.body.ced === "") {
+    res.status(400).send("Formulario Inválido");
+  } else {
+    try {
+      console.log(req.body);
+      var salt = bcrypt.genSaltSync(10);
+      var hash = bcrypt.hashSync(req.body.password, salt);
+      req.body.password = hash
+      const user = new User(req.body);
+      await user.save();
+      console.log("Profesor Creado");
+      res.status(201).send(user._id);
+    } catch (error) {
+      res.status(400).send(error);
     }
-  });
+  }
 };
 
 export const updateTeacher = (req, res) => res.send("Teacher updated");
@@ -116,7 +118,7 @@ export const updateTeacher = (req, res) => res.send("Teacher updated");
 export const deleteTeacher = async (req, res) => {
   jwt.verify(req.token, "secret", async (err, data) => {
     if (err) {
-      res.status(403).send("Token Inválido");
+      res.status(401).send("Token Inválido");
     } else {
       try {
         const { id } = req.params;
@@ -135,7 +137,7 @@ export const deleteTeacher = async (req, res) => {
 export const deleteContract = async (req, res) => {
   jwt.verify(req.token, "secret", async (err, data) => {
     if (err) {
-      res.status(403).send("Token Inválido");
+      res.status(401).send("Token Inválido");
     } else {
       try {
         const { id } = req.params;
@@ -156,7 +158,7 @@ export const deleteContract = async (req, res) => {
 export const teacherId = async (req, res) => {
   jwt.verify(req.token, "secret", async (err, data) => {
     if (err) {
-      res.status(403).send("Token Inválido");
+      res.status(401).send("Token Inválido");
     } else {
       try {
         const { id } = req.params;
@@ -184,7 +186,7 @@ export const teacherId = async (req, res) => {
 export const getContract = async (req, res) => {
   jwt.verify(req.token, "secret", async (err, data) => {
     if (err) {
-      res.status(403).send("Token Inválido");
+      res.status(401).send("Token Inválido");
     } else {
       try {
         const { id } = req.params;
@@ -193,7 +195,7 @@ export const getContract = async (req, res) => {
           .exec()
           .then((contracts) => {
             console.log(contracts);
-            res.status(200).send(contract.ced);
+            res.status(200).send(contracts);
             console.log("Busqueda Contrato");
           })
           .catch((err) => {
@@ -210,7 +212,7 @@ export const getContract = async (req, res) => {
 export const newContract = async (req, res) => {
   jwt.verify(req.token, "secret", async (err, data) => {
     if (err) {
-      res.status(403).send("Token Inválido");
+      res.status(401).send("Token Inválido");
     } else {
       try {
         console.log(req.body);
@@ -220,7 +222,7 @@ export const newContract = async (req, res) => {
           console.log(result);
           await fs.remove(req.files.contract.tempFilePath);
           const url = result.secure_url;
-    
+
           const public_id = result.public_id;
           try {
             const contract = new Contract({ ced, url, public_id, signed });
@@ -233,7 +235,7 @@ export const newContract = async (req, res) => {
               signed,
             });
             await logcontract.save();
-    
+
             res.status(201).send(contract._id);
           } catch (error) {
             console.log(error);

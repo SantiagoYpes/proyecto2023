@@ -90,7 +90,7 @@ function AlertAdd({ t , id_teacher, signed, user}) {
               className=" px-3 py-2  border border-gray-300 mt5 rounded-md focus:outline-none focus:border-[#EE2737]"
               placeholder="Ingresa una descripción"
             />
-            <input type="file" className="mt-3 text-xs"  onChange={handleFileChange} />
+            <input required type="file" className="mt-3 text-xs"  onChange={handleFileChange} />
           </div>
           
             <button

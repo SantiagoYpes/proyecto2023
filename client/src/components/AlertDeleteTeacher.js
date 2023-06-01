@@ -3,7 +3,6 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import Alert from "./Alert";
 
-import { useRouter } from "next/router";
 
 const handleError = () => {
   toast((t) => (

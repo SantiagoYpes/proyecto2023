@@ -10,7 +10,7 @@ const app = express()
 const corsOptions = {
     origin: 'http://localhost:3000',
     methods: 'GET,POST,DELETE',
-    allowedHeaders: 'Content-Type',
+    allowedHeaders: 'Content-Type,Authorization',
   };
 app.use(express.json())
 app.use(fileUpload({

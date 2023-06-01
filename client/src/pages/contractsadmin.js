@@ -4,7 +4,8 @@ import { Typography } from "@material-tailwind/react";
 import Footer from "../components/Footer";
 import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
-
+import Alert from "@/components/Alert";
+import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import { contextTeacher } from "../context/TeacherContext";
 export default function TableContractUser() {
@@ -15,6 +16,9 @@ export default function TableContractUser() {
     link.download = "Contrato.pdf"; // Establece el nombre del archivo
     link.click();
   };
+  const handleError = () => {
+    toast((t) => <Alert t={t} message="Ocurrió un error" />);
+  };
 
   const { contract, setContract } = useContext(contextTeacher);
   const router = useRouter();
@@ -22,11 +26,18 @@ export default function TableContractUser() {
   console.log("id de contrato:" + contract);
   const url = "http://localhost:4000/contracts";
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("items"));
+    axios.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
     const fetchData = async () => {
-      const result = await axios.get(url);
-      console.log(result.data);
-      setContracts(result.data);
-      console.log(contracts);
+      try {
+        const result = await axios.get(url);
+        console.log(result.data);
+        setContracts(result.data);
+        console.log(contracts);
+      } catch (error) {
+        handleError()
+        console.log(error);
+      }
     };
     fetchData();
   }, []);
@@ -44,7 +55,7 @@ export default function TableContractUser() {
           variant="h2"
           className="text-black-500 p-7 uppercase text-5xl  "
         >
-          <h1>Observa los Contratos</h1>
+          Observa los Contratos
         </Typography>
       </center>
 
@@ -116,6 +127,7 @@ export default function TableContractUser() {
           ))}
         </tbody>
       </table>
+      <Toaster/>
       <Footer />
     </div>
   );

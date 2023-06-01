@@ -4,6 +4,7 @@ import Contract from "../models/Contract.js";
 import { uploadContract } from "../libs/cloudinary.js";
 import fs from "fs-extra";
 import jwt from "jsonwebtoken";
+import bcrypt from 'bcryptjs'
 export const loginUser = async (req, res) => {
   console.log(req.body);
   const { email, pass } = req.body;
@@ -12,7 +13,7 @@ export const loginUser = async (req, res) => {
     .exec()
     .then((users) => {
       // Maneja los usuarios encontrados
-      const found = users.find((user) => user.password == pass);
+      const found = users.find((user) => bcrypt.compareSync(pass, user.password));
       const userT = found._id
       const token = jwt.sign({id:userT}, 'secret')
       const response = { id: found._id, type: found.type, ced: found.ced, token:token };

@@ -3,8 +3,9 @@ import ComplexNavbar from "@/components/NavBar2";
 import { Typography } from "@material-tailwind/react";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
-import  AlertAdd  from "../components/AlertEdit";
+import AlertAdd from "../components/AlertEdit";
 import { Toaster, toast } from "react-hot-toast";
+import Alert from "@/components/Alert";
 
 import axios from "axios";
 export default function TableContractUser() {
@@ -23,23 +24,33 @@ export default function TableContractUser() {
   const url = "http://localhost:4000/contract/" + contract;
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(url);
-      console.log(result.data);
-      setContracts(result.data);
-      console.log(contracts);
+      const user = JSON.parse(localStorage.getItem("items"));
+      axios.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
+      try {
+        const result = await axios.get(url);
+        console.log(result.data);
+        setContracts(result.data);
+        console.log(contracts);
+      } catch (error) {
+        handleError()
+      }
     };
     fetchData();
   }, []);
 
-  const [checked, setChecked] = useState(false);
+  const [checked] = useState(false);
 
-  const handleAdd = (id_teacher, id_contract) => { 
+  const handleError = () => {
+    toast((t) => <Alert t={t} message="Ocurrió un error" />);
+  };
+
+  const handleAdd = (id_teacher, id_contract) => {
     toast.loading((t) => (
       <AlertAdd
         t={t}
         id_contract={id_contract}
         id_teacher={id_teacher}
-        user ={'Profesor'}
+        user={"Profesor"}
       />
     ));
   };
@@ -123,7 +134,9 @@ export default function TableContractUser() {
                     <div className="w-11 h-6 bg-gray-400 rounded-full shadow-inner"></div>
                     <div
                       className={`absolute left-1 top-1 transition ${
-                        contract.signed=="true" ? "translate-x-5 bg-green-400" : "bg-white"
+                        contract.signed == "true"
+                          ? "translate-x-5 bg-green-400"
+                          : "bg-white"
                       } w-4 h-4 rounded-full shadow`}
                     ></div>
                   </div>
@@ -139,7 +152,7 @@ export default function TableContractUser() {
           ))}
         </tbody>
       </table>
-      <Toaster/>
+      <Toaster />
       <Footer />
     </div>
   );

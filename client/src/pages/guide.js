@@ -17,11 +17,6 @@ export default function Guide() {
           Gestión de Docentes
         </Typography>
       </center>
-      
-      <a
-        href="https://res.cloudinary.com/damz2mem8/raw/attachment/v1/contracts/hjo3zelwy7mluuvuwifx"
-        download
-      ></a>
       <TableTeacher></TableTeacher>
       <Footer />
     </div>

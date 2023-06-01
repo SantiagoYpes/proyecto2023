@@ -3,40 +3,51 @@ import { useContext, useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import axios from "axios";
 import ComplexNavbar from "@/components/NavBar";
-import  AlertAdd  from "../components/AlertAdd";
-import TableContract from "../components/TableContract";
+import AlertAdd from "../components/AlertAdd";
+import TableContract from "../components/tablecontract";
 import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "next/router";
+import Alert from "@/components/Alert";
 export default function Profile() {
-  const router= useRouter()
+  const router = useRouter();
   const [valuehour, setValuehour] = useState([]);
   const handleValuehourChange = (event) => {
     setValuehour(event.target.value);
   };
+  const handleError = () => {
+    toast((t) => <Alert t={t} message="Ocurrió un error" />);
+  };
+
   const { teacher, setTeacher } = useContext(contextTeacher);
 
   const handleSubmit = async (event) => {
-    const url = "http://localhost:4000/updateUser/"+teacher._id
+    const url = "http://localhost:4000/updateUser/" + teacher._id;
     event.preventDefault();
     const formData = new FormData();
-    formData.append('valuehour', valuehour);
+    formData.append("valuehour", valuehour);
     try {
       const response = await axios.post(url, formData);
 
-      router.push("/guide")
+      router.push("/guide");
       // Manejar la respuesta de la solicitud POST...
     } catch (error) {
-      console.error('Error al enviar la solicitud POST:', error);
+      console.error("Error al enviar la solicitud POST:", error);
     }
   };
 
-
   const url = "http://localhost:4000/teacher/" + teacher;
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("items"));
+    axios.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
     const fetchData = async () => {
-      const result = await axios.get(url);
-      setTeacher(result.data);
-      setValuehour(result.data.valuehour)
+      try {
+        const result = await axios.get(url);
+        setTeacher(result.data);
+        setValuehour(result.data.valuehour);
+      } catch (error) {
+        handleError();
+        console.log(error);
+      }
     };
 
     fetchData();
@@ -46,12 +57,12 @@ export default function Profile() {
       <AlertAdd
         t={t}
         id_teacher={id_teacher}
-        user ={'administrador'}
-        signed={'false'}
+        user={"administrador"}
+        signed={"false"}
       />
     ));
   };
-  
+
   return (
     <div className="min-h-screen  justify-center bg-gray-100">
       <ComplexNavbar />
@@ -75,6 +86,7 @@ export default function Profile() {
                   Nombre
                 </label>
                 <input
+                  required
                   type="text"
                   id="firstName"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none hover:border-[#1F6768] text-[#000000]"
@@ -86,6 +98,7 @@ export default function Profile() {
                   Apellidos
                 </label>
                 <input
+                  required
                   type="text"
                   id="firstName"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none hover:border-[#1F6768] text-[#000000]"
@@ -97,6 +110,7 @@ export default function Profile() {
                   Cédula
                 </label>
                 <input
+                  required
                   type="text"
                   id="firstName"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none hover:border-[#1F6768] text-[#000000]"
@@ -108,6 +122,7 @@ export default function Profile() {
                   Celular
                 </label>
                 <input
+                  required
                   type="text"
                   id="firstName"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none hover:border-[#1F6768] text-[#000000]"
@@ -119,6 +134,7 @@ export default function Profile() {
                   Correo electrónico
                 </label>
                 <input
+                  required
                   type="text"
                   id="firstName"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none hover:border-[#1F6768] text-[#000000]"
@@ -131,6 +147,7 @@ export default function Profile() {
                 </label>
                 <span class="absolute left-3 bottom-2.5 text-[#000000]">$</span>
                 <input
+                  required
                   type="text"
                   inputmode="numeric"
                   onChange={handleValuehourChange}
@@ -158,7 +175,7 @@ export default function Profile() {
       <div class="max-w-1xl mx-auto px-4 py-8">
         <TableContract />
       </div>
-      <Toaster/>
+      <Toaster />
       <Footer />
     </div>
   );

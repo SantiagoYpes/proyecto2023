@@ -5,19 +5,33 @@ import { contextTeacher } from "../context/TeacherContext";
 import ComplexNavbar from "@/components/NavBar";
 import Footer from "../components/Footer";
 import { Typography } from "@material-tailwind/react";
+import Alert from "@/components/Alert";
+import { Toaster, toast } from "react-hot-toast";
 function TableContract() {
   const { contract } = useContext(contextTeacher);
   const [contracts, setContracts] = useState([]);
-  
+
   const url = "http://localhost:4000/logcontract/" + contract;
+
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(url);
-      setContracts(result.data);
-      console.log(contracts);
+      try {
+        const user = JSON.parse(localStorage.getItem("items"));
+        axios.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
+        const result = await axios.get(url);
+        setContracts(result.data);
+        console.log(contracts);
+      } catch (error) {
+        handleError();
+        console.log(error);
+      }
     };
     fetchData();
   }, []);
+
+  const handleError = () => {
+    toast((t) => <Alert t={t} message="Ocurrió un error" />);
+  };
 
   if (contracts.length != 0) {
     return (
@@ -83,26 +97,26 @@ function TableContract() {
                   <div class="text-s text-gray-900">{contract.user}</div>
                 </td>
                 <td>
-                <label className="flex items-center cursor-pointer">
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      className="sr-only"
-                    />
-                    <div className="w-11 h-6 bg-gray-400 rounded-full shadow-inner"></div>
-                    <div
-                      className={`absolute left-1 top-1 transition ${
-                        contract.signed=="true" ? "translate-x-5 bg-green-400" : "bg-white"
-                      } w-4 h-4 rounded-full shadow`}
-                    ></div>
-                  </div>
-                </label>
+                  <label className="flex items-center cursor-pointer">
+                    <div className="relative">
+                      <input type="checkbox" className="sr-only" />
+                      <div className="w-11 h-6 bg-gray-400 rounded-full shadow-inner"></div>
+                      <div
+                        className={`absolute left-1 top-1 transition ${
+                          contract.signed == "true"
+                            ? "translate-x-5 bg-green-400"
+                            : "bg-white"
+                        } w-4 h-4 rounded-full shadow`}
+                      ></div>
+                    </div>
+                  </label>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <Footer/>
+        <Toaster/>
+        <Footer />
       </div>
     );
   }

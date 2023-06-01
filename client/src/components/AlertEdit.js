@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast";
 import { useState } from "react";
 import AddFilesButton from "./AddFilesButton";
 import axios from "axios";
+import { Router } from "next/router";
 function AlertAdd({ t, id_teacher, user, id_contract }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -49,6 +50,7 @@ function AlertAdd({ t, id_teacher, user, id_contract }) {
       // Manejar la respuesta de la solicitud POST...
     } catch (error) {
       console.error("Error al enviar la solicitud POST:", error);
+      handleError()
     }
   };
 
@@ -94,7 +96,7 @@ function AlertAdd({ t, id_teacher, user, id_contract }) {
               className=" px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#EE2737]"
               placeholder="Ingresa una descripción"
             />
-            <input type="file" className="mt-3 text-xs" onChange={handleFileChange} />
+            <input required type="file" className="mt-3 text-xs" onChange={handleFileChange} />
           </div>
           <td>
             <div>Firmado</div>

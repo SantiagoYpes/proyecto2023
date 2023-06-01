@@ -4,11 +4,11 @@ const router = Router()
 
 router.get('/hello', (req,res) => res.send("Hello World"))
 
-router.get('/logcontract/:id', getLogContract)
-router.post('/newlogcontract', newLogContract)
+router.get('/logcontract/:id',ensureToken, getLogContract)
+router.post('/newlogcontract',ensureToken, newLogContract)
 
 router.get('/teachers',ensureToken, getTeachers)
-router.post('/newTeacher', ensureToken, newTeacher)
+router.post('/newTeacher', newTeacher)
 router.put('/putTeacher',ensureToken, updateTeacher)
 router.delete('/deleteTeacher/:id',ensureToken, deleteTeacher)
 
@@ -27,7 +27,8 @@ function ensureToken(req, res, next){
         req.token = bearerToken
         next()
     }else{
-        res.status(401).send("No autorizado, no hay Token")
+        res.status(403).send("No autorizado, no hay Token")
+        console.log("No hay token");
     }
 }
 

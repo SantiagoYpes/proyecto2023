@@ -2,38 +2,47 @@ import React, { useContext } from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
-import  AlertDeleteTeacher  from "./AlertDeleteTeacher";
+import AlertDeleteTeacher from "./AlertDeleteTeacher";
 import { useRouter } from "next/router";
 import { contextTeacher } from "../context/TeacherContext";
-
+import Alert from "@/components/Alert";
 
 function TableTeacher() {
-  const {setTeacher} = useContext(contextTeacher)
-  const {setContract} = useContext(contextTeacher)
-  const router = useRouter()
+  const { setTeacher } = useContext(contextTeacher);
+  const { setContract } = useContext(contextTeacher);
+  const router = useRouter();
   const [teachers, setTeachers] = useState([]);
-  const url = "http://localhost:4000/teachers";
 
-  
+  const handleError = () => {
+    toast((t) => <Alert t={t} message="Ocurrió un error" />);
+  };
+
   useEffect(() => {
+    const url = "http://localhost:4000/teachers";
+
     const fetchData = async () => {
-      const result = await axios.get(url);
-      setTeachers(result.data);
-      console.log(teachers);
+      try {
+        const user = JSON.parse(localStorage.getItem("items"));
+        axios.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
+        const result = await axios.get(url);
+        setTeachers(result.data);
+        console.log(teachers);
+      } catch (error) {
+        handleError();
+        console.log(error);
+      }
     };
 
     fetchData();
   }, []);
   const handleDelete = (id) => {
-    toast((t) => (
-      <AlertDeleteTeacher t={t} id_teacher={id}/>
-    ));
+    toast((t) => <AlertDeleteTeacher t={t} id_teacher={id} />);
   };
-  const handleEdit = (id,ced) =>{
-    setTeacher(id)
-    setContract(ced)
-    router.push('/profile')
-  }
+  const handleEdit = (id, ced) => {
+    setTeacher(id);
+    setContract(ced);
+    router.push("/profile");
+  };
   return (
     <div>
       <table className="table w-full border-collapse">
@@ -78,9 +87,10 @@ function TableTeacher() {
                 {teacher.cell}
               </td>
               <td className="p-2 border border-gray-300 hidden lg:table-cell flex space-x-2">
-                <button 
-                className="bg-[#1F6768] hover:bg-green-900 text-white font-bold py-2 px-2 rounded"
-                onClick={()=>handleEdit(teacher._id,teacher.ced)}>
+                <button
+                  className="bg-[#1F6768] hover:bg-green-900 text-white font-bold py-2 px-2 rounded"
+                  onClick={() => handleEdit(teacher._id, teacher.ced)}
+                >
                   Editar
                 </button>
                 <button
