@@ -6,20 +6,24 @@ const userSchema = new Schema(
     ced: {
       type: String,
       require: true,
-      trim: true
+      trim: true,
     },
-    url: {
+    name: {
       type: String,
-      require: true
+      require: true,
     },
-    public_id: {
+    description: {
       type: String,
-      require: true
+      require: true,
     },
-    signed:{
-      type:String,
-      require:true
-    }
+    user: {
+        type: String,
+        require: true,
+      },
+    signed: {
+      type: String,
+      require: true,
+    },
   },
   {
     timestamps: true,
@@ -27,4 +31,4 @@ const userSchema = new Schema(
   }
 );
 
-export default model("Contract", userSchema);
+export default model("LogContract", userSchema);

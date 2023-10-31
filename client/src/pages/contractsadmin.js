@@ -1,13 +1,13 @@
 import React from "react";
-import ComplexNavbar from "@/components/NavBar2";
+import ComplexNavbar from "@/components/NavBar";
 import { Typography } from "@material-tailwind/react";
 import Footer from "../components/Footer";
-import { useEffect, useState } from "react";
-import AlertAdd from "../components/AlertEdit";
-import { Toaster, toast } from "react-hot-toast";
+import { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/router";
 import Alert from "@/components/Alert";
-
+import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
+import { contextTeacher } from "../context/TeacherContext";
 export default function TableContractUser() {
   const handleDownload = (downloadUrl) => {
     // Crear un enlace temporal y simular un clic para iniciar la descarga
@@ -16,16 +16,19 @@ export default function TableContractUser() {
     link.download = "Contrato.pdf"; // Establece el nombre del archivo
     link.click();
   };
+  const handleError = () => {
+    toast((t) => <Alert t={t} message="Ocurrió un error" />);
+  };
 
-  const user = JSON.parse(localStorage.getItem("items"));
-  const contract = user.ced;
+  const { contract, setContract } = useContext(contextTeacher);
+  const router = useRouter();
   const [contracts, setContracts] = useState([]);
   console.log("id de contrato:" + contract);
-  const url = "http://localhost:4000/contract/" + contract;
+  const url = "http://localhost:4000/contracts";
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("items"));
+    axios.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
     const fetchData = async () => {
-      const user = JSON.parse(localStorage.getItem("items"));
-      axios.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
       try {
         const result = await axios.get(url);
         console.log(result.data);
@@ -33,27 +36,16 @@ export default function TableContractUser() {
         console.log(contracts);
       } catch (error) {
         handleError()
+        console.log(error);
       }
     };
     fetchData();
   }, []);
-
-  const [checked] = useState(false);
-
-  const handleError = () => {
-    toast((t) => <Alert t={t} message="Ocurrió un error" />);
+  const handleEdit = (ced) => {
+    setContract(ced);
+    router.push("/logcontract");
   };
 
-  const handleAdd = (id_teacher, id_contract) => {
-    toast.loading((t) => (
-      <AlertAdd
-        t={t}
-        id_contract={id_contract}
-        id_teacher={id_teacher}
-        user={"Profesor"}
-      />
-    ));
-  };
   return (
     <div className="min-h-screen items-center justify-center bg-gray-100 text-[#000000]">
       <ComplexNavbar />
@@ -63,11 +55,11 @@ export default function TableContractUser() {
           variant="h2"
           className="text-black-500 p-7 uppercase text-5xl  "
         >
-          Observa tus Contratos
+          Observa los Contratos
         </Typography>
       </center>
 
-      <div class="text-s text-gray-900 ml-6">Contratos del Docente</div>
+      <div class="text-s text-gray-900">Contratos de los Docentes</div>
       <table class="min-w-full divide-y divide-gray-200 text-[#000000]">
         <thead class="bg-gray-50">
           <tr>
@@ -99,7 +91,7 @@ export default function TableContractUser() {
               scope="col"
               class="px-6 py-3 font-bold text-left text-s uppercase tracking-wider"
             >
-              Estado (Firmado)
+              Acciones
             </th>
           </tr>
         </thead>
@@ -124,35 +116,18 @@ export default function TableContractUser() {
                 </button>
               </td>
               <td>
-                <label className="flex items-center cursor-pointer">
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      className="sr-only"
-                      checked={checked}
-                    />
-                    <div className="w-11 h-6 bg-gray-400 rounded-full shadow-inner"></div>
-                    <div
-                      className={`absolute left-1 top-1 transition ${
-                        contract.signed == "true"
-                          ? "translate-x-5 bg-green-400"
-                          : "bg-white"
-                      } w-4 h-4 rounded-full shadow`}
-                    ></div>
-                  </div>
-                  <button
-                    class="text-red-700 font-bold py-2 px-3 rounded"
-                    onClick={() => handleAdd(contract.ced, contract._id)}
-                  >
-                    Editar
-                  </button>
-                </label>
+                <button
+                  className="bg-[#1F6768] hover:bg-green-900 text-white font-bold py-2 px-2 rounded"
+                  onClick={() => handleEdit(contract.ced)}
+                >
+                  Ver Más...
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Toaster />
+      <Toaster/>
       <Footer />
     </div>
   );

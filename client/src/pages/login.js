@@ -8,7 +8,6 @@ import { useContext } from "react";
 import { contextTeacher } from "@/context/TeacherContext";
 
 export default function LogIn() {
-  const { active, setActive } = useContext(contextTeacher || {});
   const [status, setStatus] = useState([]);
   const router = useRouter();
   const [postForm, setDatosFormulario] = useState({
@@ -29,13 +28,8 @@ export default function LogIn() {
     await axios
       .post(url, postForm)
       .then(async (response) => {
-        await axios.post("/api/login", response);
-        setStatus("hidden");
-        const validToken = await axios.get("/api/vtoken");
-        setActive(validToken.data.id);
-        setContract(validToken.data.ced)
-        alert(validToken.data.ced)
-        validToken.data.type === "teacher"
+        localStorage.setItem('items', JSON.stringify(response.data));
+        response.data.type === "teacher"
           ? router.push("/HomePage")
           : router.push("/HomePageAdmin");
         

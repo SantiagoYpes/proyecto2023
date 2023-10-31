@@ -6,14 +6,16 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Example() {
-  const router = useRouter()
+  const router = useRouter();
   const [openNav, setOpenNav] = useState(false);
-  const handleHome= ()=>{
-    router.push("/HomePage")
-  }
+  const handleLogout = () => {
+    localStorage.removeItem("item");
+    router.push("/HomePage");
+  };
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -22,14 +24,16 @@ export default function Example() {
   }, []);
 
   const navList = (
-    <ul onClick={handleHome} className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
+        <Link href="/HomePageAdmin" class="text-[#EE2737] hover:text-[#1F6768]">
           Inicio
+        </Link>
       </Typography>
     </ul>
   );
@@ -50,6 +54,11 @@ export default function Example() {
           variant="gradient"
           size="sm"
           className="bg-red-500 hidden lg:inline-block"
+          onClick={async () => {
+            localStorage.clear();
+
+            router.push("/");
+          }}
         >
           <span className="bg-red">Cerrar Sesión</span>
         </Button>
@@ -94,7 +103,17 @@ export default function Example() {
       <MobileNav open={openNav}>
         <div className="container mx-auto">
           {navList}
-          <Button variant="gradient" size="sm" fullWidth className="mb-2">
+          <Button
+            onClick={async () => {
+              localStorage.clear();
+
+              router.push("/");
+            }}
+            variant="gradient"
+            size="sm"
+            fullWidth
+            className="mb-2"
+          >
             <span>Cerrar Sesión</span>
           </Button>
         </div>

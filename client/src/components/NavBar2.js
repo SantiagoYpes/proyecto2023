@@ -57,9 +57,11 @@ export default function Example() {
           size="sm"
           className="bg-red-500 hidden lg:inline-block"
           onClick={async () => {
-            const response = await axios.post("/api/logout").finally(() => {
-              router.push("/");
-            });
+            localStorage.removeItem("item");
+            router.push("/");
+            //const response = await axios.post("/api/logout").finally(() => {
+            //router.push("/");
+            //});
           }}
         >
           <span className="bg-red">Cerrar Sesión</span>
@@ -105,7 +107,17 @@ export default function Example() {
       <MobileNav open={openNav}>
         <div className="container mx-auto">
           {navList}
-          <Button variant="gradient" size="sm" fullWidth className="mb-2">
+          <Button
+            onClick={async () => {
+              localStorage.clear();
+
+              router.push("/");
+            }}
+            variant="gradient"
+            size="sm"
+            fullWidth
+            className="mb-2"
+          >
             <span>Cerrar Sesión</span>
           </Button>
         </div>
