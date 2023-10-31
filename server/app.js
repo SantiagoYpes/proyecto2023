@@ -5,9 +5,9 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import fileUpload from "express-fileupload";
 import cors from "cors";
-const app = express()
+const app = express();
 
-const corsOptions = {
+
     origin: 'http://localhost:3000',
     methods: 'GET,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
@@ -18,7 +18,7 @@ app.use(fileUpload({
   tempFileDir: './upload'
 }))
 app.use(cors(corsOptions));
-app.use(adminRoutes)
-app.use(userRoutes)
+app.use(adminRoutes);
+app.use(userRoutes);
 
-export default app
+export default app;

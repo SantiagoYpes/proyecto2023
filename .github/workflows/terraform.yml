@@ -79,10 +79,8 @@ jobs:
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 
-     - name: Initialize Terraform
-       run: |
-         cd terraform/
-         terraform init -input=false         
+
+   
 
 
      - name: Plan Terraform
@@ -90,3 +88,4 @@ jobs:
        continue-on-error: true
        run: |
          terraform plan -input=false -no-color 
+
